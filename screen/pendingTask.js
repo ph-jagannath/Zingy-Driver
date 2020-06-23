@@ -4,7 +4,7 @@ import {
   StyleSheet,
   View,
   FlatList,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -17,7 +17,7 @@ export default class pendingTask extends Component {
     super(props);
     this.getData();
     this.state = {
-      data: []
+      data: [],
     };
   }
   // Calculate Distance using Coordinates
@@ -53,15 +53,15 @@ export default class pendingTask extends Component {
   }
   getData = () => {
     this.setState({
-      buttonLoading: true
+      buttonLoading: true,
     });
     // this.props.navigation.navigate("UserApp");
     axios({
       method: "post",
       url: "my_bookings_driver ",
-      data: { user_id: global.USER.user_id, type: "1" }
+      data: { user_id: global.USER.user_id, type: "1" },
     }).then(
-      function(response) {
+      function (response) {
         console.log(response.data);
         if (response.data.response.status) {
           console.log(response.data.response);
@@ -79,12 +79,19 @@ export default class pendingTask extends Component {
       <View style={styles.bgContainer}>
         <FlatList
           data={this.state.data}
+          ListEmptyComponent={
+            <Text
+              style={{ alignSelf: "center", color: "#000", marginTop: 200 }}
+            >
+              No Bookings Available
+            </Text>
+          }
           renderItem={({ item: d }) => (
             <TouchableWithoutFeedback
               onPress={() => {
                 global.BOOKING_TRACK_STATUS[0] = d.status;
                 this.props.navigation.navigate("PendingDetails", {
-                  data: d
+                  data: d,
                 });
               }}
             >
@@ -145,30 +152,30 @@ export default class pendingTask extends Component {
 const styles = StyleSheet.create({
   bgContainer: {
     flex: 1,
-    width: null
+    width: null,
   },
   nameText: {
     color: global.COLOR.PRIMARY,
-    fontSize: 16
+    fontSize: 16,
   },
   addressText: {
     width: 210,
-    fontSize: 16
+    fontSize: 16,
   },
   faltlist: {
     flexDirection: "row",
     justifyContent: "space-between",
     margin: 10,
     borderBottomWidth: 0.5,
-    borderBottomColor: "gray"
+    borderBottomColor: "gray",
   },
   rightContainer: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   distanceContainer: {
     flexDirection: "row",
-    justifyContent: "flex-start"
-  }
+    justifyContent: "flex-start",
+  },
 });

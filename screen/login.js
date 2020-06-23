@@ -161,7 +161,7 @@ export default class login extends Component {
               style={{
                 width: 240,
                 height: 200,
-                resizeMode: "cover",
+                resizeMode: "contain",
                 alignSelf: "center",
               }}
             />

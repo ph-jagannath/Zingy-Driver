@@ -131,12 +131,13 @@ export default class home extends Component {
             {/* logo container */}
             <View style={styles.logo}>
               <Image
-                source={logo}
+                source={global.ASSETS.LOGO_WHITE}
                 style={{
-                  width: 80,
-                  height: 58,
-                  resizeMode: "contain",
-                  alignSelf: "center",
+                  width: 200,
+                  height: 50,
+                  resizeMode: "cover",
+                  marginLeft: 50,
+                  // alignSelf: "center",
                 }}
               />
             </View>
@@ -285,9 +286,10 @@ const styles = StyleSheet.create({
   },
   switch: {
     marginTop: 25,
+    marginLeft: -20,
   },
   logo: {
-    marginTop: 9,
+    marginTop: 15,
   },
   header: {
     backgroundColor: global.COLOR.PRIMARY,

@@ -4,7 +4,7 @@ import {
   StyleSheet,
   View,
   FlatList,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Icon, Avatar } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -17,7 +17,7 @@ export default class notifications extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: "Notifications",
     headerStyle: {
-      backgroundColor: global.COLOR.PRIMARY
+      backgroundColor: global.COLOR.PRIMARY,
     },
     headerLeft: (
       <Icon
@@ -41,20 +41,20 @@ export default class notifications extends Component {
     headerTintColor: "#fff",
 
     headerTitleStyle: {
-      fontWeight: "bold"
-    }
+      fontWeight: "bold",
+    },
   });
   constructor(props) {
     super(props);
     this.getData();
     this.state = {
-      data: []
+      data: [],
     };
   }
 
   getData = () => {
     this.setState({
-      buttonLoading: true
+      buttonLoading: true,
     });
     // this.props.navigation.navigate("UserApp");
     axios({
@@ -63,10 +63,10 @@ export default class notifications extends Component {
       data: {
         user_id: global.USER.user_id,
         language: global.CONSTANT.language,
-        type: "2"
-      }
+        type: "2",
+      },
     }).then(
-      function(response) {
+      function (response) {
         console.log(response.data);
         if (response.data.response.status) {
           console.log(response.data.response);
@@ -83,6 +83,13 @@ export default class notifications extends Component {
       <View style={styles.bgContainer}>
         <FlatList
           data={this.state.data}
+          ListEmptyComponent={
+            <Text
+              style={{ alignSelf: "center", color: "#000", marginTop: 200 }}
+            >
+              No Notifications Available
+            </Text>
+          }
           renderItem={({ item: d }) => (
             <View style={styles.flatlist}>
               <View style={styles.flexContainer}>
@@ -95,7 +102,7 @@ export default class notifications extends Component {
                         ? global.ASSETS.PROFILE
                         : d.img == ""
                         ? global.ASSETS.PROFILE
-                        : d.img
+                        : d.img,
                     }}
                   />
                 </View>
@@ -119,37 +126,37 @@ const styles = StyleSheet.create({
   bgContainer: {
     flex: 1,
     width: null,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   flatlist: {
     backgroundColor: "rgba(187,187,187,10)",
     borderBottomColor: "#fff",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
   avatarContainer: {
-    marginVertical: 10
+    marginVertical: 10,
     // margin: 10
     // marginHorizontal: 10
   },
   nameText: {
     color: global.COLOR.PRIMARY,
-    fontSize: 20
+    fontSize: 20,
   },
   messageText: {
     fontSize: 16,
-    color: "gray"
+    color: "gray",
   },
   flexContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginHorizontal: 10
+    marginHorizontal: 10,
   },
   textContainer: {
     alignSelf: "center",
-    width: 200
+    width: 200,
   },
   dayContainer: {
     alignSelf: "center",
-    marginTop: -40
-  }
+    marginTop: -40,
+  },
 });

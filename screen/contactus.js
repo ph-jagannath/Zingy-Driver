@@ -129,7 +129,7 @@ export default class ContactUs extends Component {
                   labelStyle={styles.labelText}
                   inputContainerStyle={{
                     borderBottomWidth: 0,
-                    backgroundColor: "#37A2F0",
+                    backgroundColor: global.COLOR.PRIMARY,
                     height: 45,
 
                     // marginLeft: -40,
@@ -148,7 +148,7 @@ export default class ContactUs extends Component {
                   labelStyle={styles.labelText}
                   inputContainerStyle={{
                     borderBottomWidth: 0,
-                    backgroundColor: "#37A2F0",
+                    backgroundColor: global.COLOR.PRIMARY,
                     height: 45,
 
                     // marginLeft: -40,
@@ -167,7 +167,7 @@ export default class ContactUs extends Component {
                   labelStyle={styles.labelText}
                   inputContainerStyle={{
                     borderBottomWidth: 0,
-                    backgroundColor: "#37A2F0",
+                    backgroundColor: global.COLOR.PRIMARY,
                     height: 45,
 
                     // marginLeft: -40,
@@ -186,7 +186,7 @@ export default class ContactUs extends Component {
                   labelStyle={styles.labelText}
                   inputContainerStyle={{
                     borderBottomWidth: 0,
-                    backgroundColor: "#37A2F0",
+                    backgroundColor: global.COLOR.PRIMARY,
                     height: 45,
 
                     // marginLeft: -40,
@@ -205,7 +205,7 @@ export default class ContactUs extends Component {
                   labelStyle={styles.labelText}
                   inputContainerStyle={{
                     borderBottomWidth: 0,
-                    backgroundColor: "#37A2F0",
+                    backgroundColor: global.COLOR.PRIMARY,
                     height: 90,
 
                     // marginLeft: -40,
@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
     // marginTop: "-13%"
   },
   userContainer: {
-    backgroundColor: "#37A2F0",
+    backgroundColor: global.COLOR.PRIMARY,
     borderWidth: 3,
     height: 40,
     width: 100,

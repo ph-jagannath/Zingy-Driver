@@ -13,7 +13,7 @@ export default {
 
   FONT: {},
   COLOR: {
-    PRIMARY: "#018ACE",
+    PRIMARY: "#6ABE43",
   },
   CONSTANT: {
     // APPNAME: Constants.manifest.name,
@@ -36,6 +36,8 @@ export default {
     PROFILE: "https://www.w3schools.com/howto/img_avatar.png",
     TICK: require("./assets/tick.png"),
     ADD: require("./assets/add.png"),
+    LOGO_WHITE: require("./assets/logo-white.png"),
+    LOGO: require("./assets/logo.png"),
   },
   DRIVER_LOCATION: [
     0, //lat

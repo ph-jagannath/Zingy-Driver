@@ -75,6 +75,13 @@ export default class activeTask extends Component {
       <View style={styles.bgContainer}>
         <FlatList
           data={this.state.data}
+          ListEmptyComponent={
+            <Text
+              style={{ alignSelf: "center", color: "#000", marginTop: 200 }}
+            >
+              No Bookings Available
+            </Text>
+          }
           renderItem={({ item: d }) => (
             <TouchableWithoutFeedback
               onPress={() => {

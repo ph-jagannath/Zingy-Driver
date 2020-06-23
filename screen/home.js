@@ -133,10 +133,9 @@ export default class home extends Component {
               <Image
                 source={global.ASSETS.LOGO_WHITE}
                 style={{
-                  width: 200,
-                  height: 50,
+                  width: 80,
+                  height: 60,
                   resizeMode: "cover",
-                  marginLeft: 50,
                   // alignSelf: "center",
                 }}
               />
@@ -286,10 +285,9 @@ const styles = StyleSheet.create({
   },
   switch: {
     marginTop: 25,
-    marginLeft: -20,
   },
   logo: {
-    marginTop: 15,
+    marginTop: 9,
   },
   header: {
     backgroundColor: global.COLOR.PRIMARY,

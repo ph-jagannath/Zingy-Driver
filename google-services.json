@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "229909866496",
+    "firebase_url": "https://carnawashapp-1576115536680.firebaseio.com",
+    "project_id": "carnawashapp-1576115536680",
+    "storage_bucket": "carnawashapp-1576115536680.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229909866496:android:f3b6f11607581e5b0590e5",
+        "android_client_info": {
+          "package_name": "com.carnawash.customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229909866496-r57mj4nadcdld6ghooaps4li5dm0mv6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwlLsewR2qLyGeGr1N8ph7Li2NLwL3UWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229909866496-r57mj4nadcdld6ghooaps4li5dm0mv6d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229909866496:android:dbbb21a7468e3bb00590e5",
+        "android_client_info": {
+          "package_name": "com.carnawashapp.driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229909866496-r57mj4nadcdld6ghooaps4li5dm0mv6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwlLsewR2qLyGeGr1N8ph7Li2NLwL3UWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229909866496-r57mj4nadcdld6ghooaps4li5dm0mv6d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

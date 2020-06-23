@@ -1,0 +1,62 @@
+{
+  "expo": {
+    "name": "Carnawash Driver",
+    "slug": "carnawash-driver",
+    "privacy": "public",
+    "sdkVersion": "36.0.0",
+    "platforms": ["ios", "android", "web"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.jpg",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": ["comgooglemaps"],
+        "NSCameraUsageDescription": "This app uses the camera for the user to select before and after wash images during the service.",
+        "NSPhotoLibraryUsageDescription": "This app uses the camera for the user to select before and after wash images during the service.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app uses location access to locate the current user and help in finding out the nearby service provider for their quick servces offered by the app which helps the user to loacte the nearby booking.",
+        "NSLocationAlwaysUsageDescription": "This app uses location access to locate the current user and help in finding out the nearby service provider for their quick servces offered by the app which helps the user to loacte the nearby booking.",
+        "NSLocationWhenInUseUsageDescription": "This app uses location access to locate the current user and help in finding out the nearby service provider for their quick servces offered by the app which helps the user to loacte the nearby booking."
+      },
+      "supportsTablet": true,
+      "bundleIdentifier": "com.carnawashapp.driver",
+      "buildNumber": "1",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.376088407688-ovv8qsjevah02924087j0qvl524rm2vt"
+        },
+        "googleMapsApiKey": "AIzaSyAIQSOsTQbNfJo-fuBdDqkFiNjAg5Y9IUQ"
+      },
+      "googleServicesFile": "./GoogleService-Info.plist"
+    },
+    "android": {
+      "package": "com.carnawashapp.driver",
+      "googleServicesFile": "./google-services.json",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyC0tHRwMeGx9J5w1Soe2vBWSMvA6nub4gQ"
+        }
+      },
+      "versionCode": 1
+    },
+    "androidNavigationBar": {
+      "visible": true,
+      "barStyle": "dark-content",
+      "backgroundColor": "#000"
+    },
+    "notification": {
+      "icon": "./assets/logo.png",
+      "color": "#018ACE",
+      "iosDisplayInForeground": true,
+      "androidMode": "default"
+    }
+  }
+}

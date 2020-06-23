@@ -1,6 +1,22 @@
 import { Dimensions, Platform } from "react-native";
 import Constants from "expo-constants";
 import axios from "axios";
+import * as Localization from "expo-localization";
+import i18n from "i18n-js";
+
+i18n.translations = {
+  en: {
+    home: "Home",
+    bookings: "Bookings",
+    transaction_history: "Transaction History",
+  },
+  it: {
+    home: "casa",
+    bookings: "prenotazioni",
+    transaction_history: "Cronologia delle transazioni",
+  },
+};
+
 axios.defaults.baseURL =
   // "http://192.168.0.165/project/carwash/webservices/";
   "http://carnawashapp.com/webservices/";
@@ -27,7 +43,7 @@ export default {
     DEVICETYPE: Platform.OS,
     DEVICEID: "device_id",
     LANGUAGE: "eng",
-    SUPPORT_MAIL: "carnawashapp@gmail.com",
+    SUPPORT_MAIL: "dacwash@gmail.com",
     // DEVICETOKEN: ""
   },
   BOOKING_ID: "", // for getting booking details
@@ -48,4 +64,8 @@ export default {
   ],
   BOOKING_TRACK_STATUS: ["0"],
   CHAT_DETAILS: {},
+
+  LANGUAGE: [
+    "en", // en || it
+  ],
 };

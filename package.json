@@ -13,9 +13,12 @@
     "expo": "~36.0.0",
     "expo-constants": "~8.0.0",
     "expo-image-picker": "~8.0.1",
+    "expo-localization": "~8.0.0",
     "expo-location": "~8.0.0",
     "expo-permissions": "~8.0.0",
+    "expo-web-browser": "~8.0.0",
     "firebase": "^7.10.0",
+    "i18n-js": "^3.7.0",
     "moment": "^2.24.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
@@ -36,8 +39,7 @@
     "react-navigation-drawer": "^2.3.3",
     "react-navigation-material-bottom-tabs": "^2.1.5",
     "react-navigation-stack": "^1.10.3",
-    "toggle-switch-react-native": "^2.1.0",
-    "expo-web-browser": "~8.0.0"
+    "toggle-switch-react-native": "^2.1.0"
   },
   "devDependencies": {
     "babel-preset-expo": "~8.0.0",

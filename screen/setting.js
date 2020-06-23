@@ -1,9 +1,17 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  AsyncStorage,
+} from "react-native";
 import { Icon } from "react-native-elements";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { Linking } from "expo";
 import global from "../global";
+import { RadioButton } from "react-native-paper";
+import i18n from "i18n-js";
 
 export default class setting extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -40,6 +48,46 @@ export default class setting extends Component {
       fontWeight: "bold",
     },
   });
+
+  constructor(props) {
+    super(props);
+    this.getLanguage();
+    this.state = {
+      language: "en",
+    };
+  }
+  async getLanguage() {
+    try {
+      let language = await AsyncStorage.getItem("LANGUAGE").then((value) => {
+        if (value) {
+          console.log(value);
+          return value;
+        }
+      });
+      if (!language) {
+        await AsyncStorage.setItem("LANGUAGE", "en", (err) => {
+          if (err) {
+            console.log("an error store language async");
+            throw err;
+          }
+          console.log("Language Stored");
+          this.setState({
+            language: "en",
+          });
+          i18n.locale = "en";
+        }).catch((err) => {
+          console.log("error is: " + err);
+        });
+        // }}
+      } else {
+        i18n.locale = language;
+
+        this.setState({ language });
+      }
+    } catch (error) {
+      console.log("Something went wrong");
+    }
+  }
 
   render() {
     return (
@@ -179,6 +227,46 @@ export default class setting extends Component {
             size={35}
           />
         </TouchableOpacity>
+        {/* contact us */}
+        <TouchableOpacity
+          style={styles.aboutContainer}
+          // onPress={() =>
+          // Linking.openURL(`mailto: ${global.CONSTANT.SUPPORT_MAIL}`)
+          // this.props.navigation.navigate("contact")
+          // }
+        >
+          <View>
+            <Text style={styles.aboutText}>Change Language</Text>
+
+            <RadioButton.Group
+              onValueChange={async (value) => {
+                await AsyncStorage.setItem("LANGUAGE", value, (err) => {
+                  if (err) {
+                    console.log("an error store language async");
+                    throw err;
+                  }
+                  console.log("Language Stored");
+                  i18n.locale = value;
+                  this.setState({ language: value });
+                }).catch((err) => {
+                  console.log("error is: " + err);
+                });
+              }}
+              value={this.state.language}
+            >
+              <View style={{ paddingLeft: 20 }}>
+                <View style={styles.radioItem}>
+                  <RadioButton color={global.COLOR.PRIMARY} value="en" />
+                  <Text style={styles.radioText}>English</Text>
+                </View>
+                <View style={styles.radioItem}>
+                  <RadioButton color={global.COLOR.PRIMARY} value="it" />
+                  <Text style={styles.radioText}>Italian</Text>
+                </View>
+              </View>
+            </RadioButton.Group>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -196,7 +284,7 @@ const styles = StyleSheet.create({
     // marginVertical: 20,
     borderBottomColor: "gray",
     borderBottomWidth: 0.5,
-    height: 60,
+    // height: 60,
     // justifyContent: "center"
   },
 
@@ -205,9 +293,16 @@ const styles = StyleSheet.create({
     fontWeight: "normal",
     fontSize: 16,
     margin: 16,
-    textAlign: "center",
+    // textAlign: "center",
   },
   leftIcon: {
     marginTop: 10,
+  },
+  radioItem: {
+    flexDirection: "row",
+  },
+  radioText: {
+    alignSelf: "center",
+    fontSize: 16,
   },
 });

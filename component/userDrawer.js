@@ -19,6 +19,7 @@ import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import axios from "axios";
 import * as WebBrowser from "expo-web-browser";
+import i18n from "i18n-js";
 
 const DATA = {
   profile_image: "https://placeimg.com/640/480/any",
@@ -139,7 +140,7 @@ export default class userDrawer extends Component {
                   },
                 ]}
               >
-                Home
+                {i18n.t("home")}
               </Text>
             </View>
           </TouchableOpacity>
@@ -163,7 +164,7 @@ export default class userDrawer extends Component {
                   },
                 ]}
               >
-                Bookings
+                {i18n.t("bookings")}
               </Text>
             </View>
           </TouchableOpacity>
@@ -173,26 +174,26 @@ export default class userDrawer extends Component {
             style={{
               backgroundColor:
                 this.props.activeItemKey == "cancelBooking"
-                  ? global.COLOR.PRIMARY
-                  : "#fff"
-            }}
-          >
-            <View>
-              <Text
-                style={[
-                  styles.text,
-                  {
-                    color:
-                      this.props.activeItemKey == "cancelBooking"
-                        ? "#fff"
-                        : "#000"
-                  }
-                ]}
+                ? global.COLOR.PRIMARY
+                : "#fff"
+              }}
               >
-                Cancel Booking
+              <View>
+              <Text
+              style={[
+                styles.text,
+                {
+                  color:
+                  this.props.activeItemKey == "cancelBooking"
+                  ? "#fff"
+                  : "#000"
+                }
+              ]}
+              >
+              Cancel Booking
               </Text>
-            </View>
-          </TouchableOpacity> */}
+              </View>
+            </TouchableOpacity> */}
           {/* 3 cancel booking container */}
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("transactionHistory")}
@@ -215,7 +216,7 @@ export default class userDrawer extends Component {
                   },
                 ]}
               >
-                Transaction History
+                {i18n.t("transaction_history")}
               </Text>
             </View>
           </TouchableOpacity>
@@ -352,5 +353,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "200",
     margin: 18,
+    textTransform: "capitalize",
   },
 });

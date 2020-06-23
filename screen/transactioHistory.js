@@ -11,6 +11,7 @@ import { Icon, Avatar } from "react-native-elements";
 import TimeAgo from "react-native-timeago";
 import global from "../global";
 import axios from "axios";
+import i18n from "i18n-js";
 
 export default class transactioHistory extends Component {
   static navigationOptions = ({ navigation }) => ({

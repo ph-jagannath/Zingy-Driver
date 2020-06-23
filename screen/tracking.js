@@ -336,7 +336,7 @@ export default class tracking extends Component {
             {/* logo container */}
             <View style={styles.logo}>
               <Image
-                source={logo}
+                source={global.ASSETS.LOGO_WHITE}
                 style={{
                   width: 100,
                   height: 80,

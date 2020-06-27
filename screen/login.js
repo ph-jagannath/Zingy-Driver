@@ -225,19 +225,19 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
   inputContainer: {
-    marginBottom: 50,
+    // marginBottom: 50,
     marginHorizontal: 50,
   },
   fromContainer: {
     flexDirection: "row",
     borderBottomWidth: 1,
     borderBottomColor: "gray",
-    // marginHorizontal: 40
+    marginBottom: 30,
   },
   labelText: {
     fontWeight: "bold",
-    fontSize: 18,
-    marginVertical: 10,
+    fontSize: 16,
+    // marginVertical: 10,
     color: "#000",
     marginLeft: -11,
   },
@@ -255,13 +255,13 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     backgroundColor: global.COLOR.PRIMARY,
-    height: 60,
+    height: 40,
     width: 270,
     // marginTop: 50
   },
   buttonTitle: {
     color: "#fff",
-    fontWeight: "bold",
-    fontSize: 26,
+    // fontWeight: "bold",
+    fontSize: 18,
   },
 });

@@ -5,6 +5,7 @@ import {
   View,
   FlatList,
   TouchableWithoutFeedback,
+  Image,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -96,12 +97,26 @@ export default class pendingTask extends Component {
               }}
             >
               <View style={styles.faltlist}>
+                <View style={{ justifyContent: "center" }}>
+                  <Image
+                    source={global.ASSETS.CAR_ICON}
+                    style={{
+                      width: 40,
+                      height: 30,
+                      alignSelf: "center",
+                      resizeMode: "contain",
+                    }}
+                  />
+                </View>
                 <View>
-                  <Text style={styles.nameText}>{d.first_name}</Text>
-                  <Text style={styles.addressText}>
+                  <Text style={styles.nameText}>{d.plan_name}</Text>
+                  {/* <Text style={styles.nameText}>{d.first_name}</Text> */}
+                  <Text style={styles.nameText}>
                     {d.vehicle_make} {d.vehicle_model}
                   </Text>
-                  <Text style={styles.addressText}>{d.booking_address}</Text>
+                  <Text style={styles.addressText}>
+                    Location : {d.booking_address}
+                  </Text>
                   <View style={styles.distanceContainer}>
                     <Text>Distance : </Text>
                     <Text style={styles.nameText}>
@@ -155,7 +170,7 @@ const styles = StyleSheet.create({
     width: null,
   },
   nameText: {
-    color: global.COLOR.PRIMARY,
+    color: global.COLOR.PRIMARY_DARK,
     fontSize: 16,
   },
   addressText: {

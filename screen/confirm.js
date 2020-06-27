@@ -16,7 +16,7 @@ import axios from "axios";
 
 export default class confirm extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "Order Cost",
+    title: "Complete Booking",
     headerStyle: {
       backgroundColor: global.COLOR.PRIMARY,
     },

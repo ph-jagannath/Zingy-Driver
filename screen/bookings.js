@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-elements";
 import ScrollableTabView from "react-native-scrollable-tab-view";
 import PendingTask from "./pendingTask";
@@ -10,7 +10,7 @@ export default class bookings extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: "My Task",
     headerStyle: {
-      backgroundColor: global.COLOR.PRIMARY
+      backgroundColor: global.COLOR.PRIMARY,
     },
     headerLeft: (
       <Icon
@@ -38,28 +38,31 @@ export default class bookings extends Component {
     headerTintColor: "#fff",
 
     headerTitleStyle: {
-      fontWeight: "bold"
-    }
+      fontWeight: "bold",
+    },
   });
   constructor(props) {
     super(props);
     this.state = {
-      my_Task: "tasks"
+      my_Task: "tasks",
     };
   }
 
   render() {
     return (
-      <ScrollableTabView
-        tabBarBackgroundColor={global.COLOR.PRIMARY}
-        tabBarActiveTextColor="#fff"
-        tabBarUnderlineStyle={{ backgroundColor: "#fff" }}
-        initialPage={1}
-        locked={true}
-      >
-        <ActiveTask tabLabel="TASKS" navigation={this.props.navigation} />
-        <PendingTask tabLabel="PENDING" navigation={this.props.navigation} />
-      </ScrollableTabView>
+      <View style={{ flex: 1, marginTop: 10, paddingHorizontal: 10 }}>
+        <ScrollableTabView
+          tabBarBackgroundColor={global.COLOR.PRIMARY}
+          tabBarActiveTextColor="#fff"
+          // tabBarTextStyle={{ fontWeight: "bold" }}
+          tabBarUnderlineStyle={{ backgroundColor: "#fff" }}
+          initialPage={1}
+          locked={true}
+        >
+          <ActiveTask tabLabel="Tasks" navigation={this.props.navigation} />
+          <PendingTask tabLabel="Pending" navigation={this.props.navigation} />
+        </ScrollableTabView>
+      </View>
     );
   }
 }

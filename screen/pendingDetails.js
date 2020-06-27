@@ -98,7 +98,7 @@ export default class pendingDetails extends Component {
       <View style={styles.bgContainer}>
         {/* upper container */}
         <View style={styles.upperContainer}>
-          <Icon
+          {/* <Icon
             name="forum-outline"
             color={global.COLOR.PRIMARY}
             reverse
@@ -107,7 +107,7 @@ export default class pendingDetails extends Component {
             iconStyle={styles.icon}
             Component={TouchableOpacity}
             containerStyle={styles.iconContainer}
-          />
+          /> */}
           <View>
             {/* name container */}
             <View style={styles.nameContainer}>
@@ -135,7 +135,7 @@ export default class pendingDetails extends Component {
             </View>
             {/* commments container */}
             <View style={styles.nameContainer}>
-              <Text style={styles.nameText}>Comments</Text>
+              {/* <Text style={styles.nameText}>Comments</Text> */}
               {/* image conytainer */}
               <View style={styles.imageContainer}>
                 <View>
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   itemContainer: {
-    width: 300,
+    width: 210,
     fontSize: 16,
   },
   nameContainer: {

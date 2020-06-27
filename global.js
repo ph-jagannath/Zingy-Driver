@@ -30,6 +30,7 @@ export default {
   FONT: {},
   COLOR: {
     PRIMARY: "#6ABE43",
+    PRIMARY_DARK: "#006937",
   },
   CONSTANT: {
     // APPNAME: Constants.manifest.name,
@@ -54,6 +55,7 @@ export default {
     ADD: require("./assets/add.png"),
     LOGO_WHITE: require("./assets/logo-white.png"),
     LOGO: require("./assets/logo.png"),
+    CAR_ICON: require("./assets/car-wash.png"),
   },
   DRIVER_LOCATION: [
     0, //lat

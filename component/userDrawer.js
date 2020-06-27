@@ -131,7 +131,7 @@ export default class userDrawer extends Component {
                   : "#fff",
             }}
           >
-            <View>
+            <View style={styles.itemContainer}>
               <Text
                 style={[
                   styles.text,
@@ -142,6 +142,11 @@ export default class userDrawer extends Component {
               >
                 {i18n.t("home")}
               </Text>
+              <Icon
+                name="chevron-right"
+                color={this.props.activeItemKey == "home" ? "#fff" : "#000"}
+                size={26}
+              />
             </View>
           </TouchableOpacity>
           {/* 1 booking container */}
@@ -154,7 +159,7 @@ export default class userDrawer extends Component {
                   : "#fff",
             }}
           >
-            <View>
+            <View style={styles.itemContainer}>
               <Text
                 style={[
                   styles.text,
@@ -166,6 +171,11 @@ export default class userDrawer extends Component {
               >
                 {i18n.t("bookings")}
               </Text>
+              <Icon
+                name="chevron-right"
+                color={this.props.activeItemKey == "bookings" ? "#fff" : "#000"}
+                size={26}
+              />
             </View>
           </TouchableOpacity>
           {/* 2 cancel booking container */}
@@ -204,7 +214,7 @@ export default class userDrawer extends Component {
                   : "#fff",
             }}
           >
-            <View>
+            <View style={styles.itemContainer}>
               <Text
                 style={[
                   styles.text,
@@ -218,6 +228,15 @@ export default class userDrawer extends Component {
               >
                 {i18n.t("transaction_history")}
               </Text>
+              <Icon
+                name="chevron-right"
+                color={
+                  this.props.activeItemKey == "transactionHistory"
+                    ? "#fff"
+                    : "#000"
+                }
+                size={26}
+              />
             </View>
           </TouchableOpacity>
           {/* 4 soppnig container */}
@@ -236,7 +255,7 @@ export default class userDrawer extends Component {
                   : "#fff",
             }}
           >
-            <View>
+            <View style={styles.itemContainer}>
               <Text
                 style={[
                   styles.text,
@@ -248,6 +267,11 @@ export default class userDrawer extends Component {
               >
                 Products
               </Text>
+              <Icon
+                name="chevron-right"
+                color={this.props.activeItemKey == "Shopping" ? "#fff" : "#000"}
+                size={26}
+              />
             </View>
           </TouchableOpacity>
           {/* 4 cancel booking container */}
@@ -260,7 +284,7 @@ export default class userDrawer extends Component {
                   : "#fff",
             }}
           >
-            <View>
+            <View style={styles.itemContainer}>
               <Text
                 style={[
                   styles.text,
@@ -274,6 +298,13 @@ export default class userDrawer extends Component {
               >
                 Notifications
               </Text>
+              <Icon
+                name="chevron-right"
+                color={
+                  this.props.activeItemKey == "notifications" ? "#fff" : "#000"
+                }
+                size={26}
+              />
             </View>
           </TouchableOpacity>
           {/* 5 cancel booking container */}
@@ -286,7 +317,7 @@ export default class userDrawer extends Component {
                   : "#fff",
             }}
           >
-            <View>
+            <View style={styles.itemContainer}>
               <Text
                 style={[
                   styles.text,
@@ -298,11 +329,16 @@ export default class userDrawer extends Component {
               >
                 Settings
               </Text>
+              <Icon
+                name="chevron-right"
+                color={this.props.activeItemKey == "setting" ? "#fff" : "#000"}
+                size={26}
+              />
             </View>
           </TouchableOpacity>
           {/* logout Container */}
           <TouchableOpacity onPress={() => this.handleLogout()}>
-            <View>
+            <View style={styles.itemContainer}>
               <Text
                 style={[
                   styles.text,
@@ -335,11 +371,13 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: 20,
     fontWeight: "bold",
+    alignSelf: "center",
   },
   nameText: {
     fontSize: 20,
     marginTop: 10,
-    color: "#4d67a3",
+    alignSelf: "center",
+    color: global.COLOR.PRIMARY_DARK,
     // fontWeight: "bold"
   },
   routeContainer: {
@@ -350,9 +388,13 @@ const styles = StyleSheet.create({
 
   text: {
     color: "#fff",
-    fontSize: 20,
-    fontWeight: "200",
+    fontSize: 17,
     margin: 18,
     textTransform: "capitalize",
+  },
+  itemContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });

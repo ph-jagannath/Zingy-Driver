@@ -430,9 +430,8 @@ export default class tracking extends Component {
               Plate Number : {d.vehicle_plate_code} - {d.vehicle_plate_number}
             </Text>
             <View style={styles.packageContainer}>
-              <Text style={{ marginHorizontal: 10 }}>Package :</Text>
-              <Text style={styles.addressText}>
-                {d.plan_name} - {d.plan_service}
+              <Text style={{ marginHorizontal: 10, width: 300 }}>
+                Package : {d.plan_name} - {d.plan_service}
               </Text>
             </View>
             <View style={styles.mobileContainer}>
@@ -720,13 +719,13 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignSelf: "center",
-    marginTop: 10,
+    marginTop: 25,
     // marginHorizontal: 70
   },
   buttonStyle: {
     backgroundColor: global.COLOR.PRIMARY,
-    height: 60,
-    width: 430,
+    height: 40,
+    width: 270,
     // borderRadius: 40
     // marginTop: 50
   },
@@ -766,8 +765,8 @@ const styles = StyleSheet.create({
   },
   overlayButtonStyle: {
     backgroundColor: global.COLOR.PRIMARY,
-    height: 60,
-    width: 314,
+    height: 40,
+    width: 270,
   },
   overlayButtonTitle: {
     color: "#fff",

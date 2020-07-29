@@ -6,6 +6,7 @@ import {
   FlatList,
   TouchableWithoutFeedback,
   Image,
+  Alert,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";

@@ -19,7 +19,7 @@ i18n.translations = {
 
 axios.defaults.baseURL =
   // "http://192.168.0.165/project/carwash/webservices/";
-  "http://carnawashapp.com/webservices/";
+  "https://dacwash.com/webservices/";
 
 var { height, width } = Dimensions.get("window");
 export default {

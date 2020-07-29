@@ -23,15 +23,15 @@ export default class home extends Component {
   };
   constructor(props) {
     super(props);
-    this._getLocationAsync();
+    // this._getLocationAsync();
     this.state = {
       alert: false,
       switchValue: true,
       active: true,
       isVisible: false,
       checked: "",
-      latitude: 0,
-      longitude: 0,
+      latitude: 35.917973,
+      longitude: 14.409943,
       latitudeDelta: 0.006,
       longitudeDelta: 0.003,
       marginBottom: 1,

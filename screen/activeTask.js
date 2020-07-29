@@ -4,6 +4,7 @@ import {
   StyleSheet,
   View,
   FlatList,
+  Alert,
   TouchableWithoutFeedback,
 } from "react-native";
 import { Icon } from "react-native-elements";

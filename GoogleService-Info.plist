@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>229909866496-604umg0mjil3jou0anmetaft68e5kg1e.apps.googleusercontent.com</string>
+	<string>244777178350-4uqs6s3uj44d8rimupbvee5b4ou5jgt1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.229909866496-604umg0mjil3jou0anmetaft68e5kg1e</string>
+	<string>com.googleusercontent.apps.244777178350-4uqs6s3uj44d8rimupbvee5b4ou5jgt1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAZlXSRqQ9X-L_SuytAiKctPYNJA6MQbpY</string>
+	<string>AIzaSyBG3aIJqv-kD-nbVQLjGJTff5E-ZiFl4EU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>229909866496</string>
+	<string>244777178350</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.carnawashapp.driver</string>
+	<string>com.dacwash.driver</string>
 	<key>PROJECT_ID</key>
-	<string>carnawashapp-1576115536680</string>
+	<string>dacwash</string>
 	<key>STORAGE_BUCKET</key>
-	<string>carnawashapp-1576115536680.appspot.com</string>
+	<string>dacwash.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:229909866496:ios:dc0613f62f4c64f90590e5</string>
+	<string>1:244777178350:ios:7dc8d25fea44d46b348fff</string>
 	<key>DATABASE_URL</key>
-	<string>https://carnawashapp-1576115536680.firebaseio.com</string>
+	<string>https://dacwash.firebaseio.com</string>
 </dict>
 </plist>

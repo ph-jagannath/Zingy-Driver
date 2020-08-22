@@ -55,7 +55,7 @@ export default class activeTask extends Component {
     // this.props.navigation.navigate("UserApp");
     axios({
       method: "post",
-      url: "my_bookings_driver ",
+      url: "my_bookings_driver",
       data: { user_id: global.USER.user_id, type: "2" },
     }).then(
       function (response) {

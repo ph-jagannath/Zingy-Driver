@@ -60,7 +60,7 @@ export default class pendingTask extends Component {
     // this.props.navigation.navigate("UserApp");
     axios({
       method: "post",
-      url: "my_bookings_driver ",
+      url: "my_bookings_driver",
       data: { user_id: global.USER.user_id, type: "1" },
     }).then(
       function (response) {
@@ -110,7 +110,10 @@ export default class pendingTask extends Component {
                   />
                 </View>
                 <View>
-                  <Text style={styles.nameText}>{d.plan_name}</Text>
+                  <Text style={styles.nameText}>
+                    {d.plan_name}
+                    {/* {d.vehicle_type == "1" ? d.plan_name : "Two Wheeler Wash"} */}
+                  </Text>
                   {/* <Text style={styles.nameText}>{d.first_name}</Text> */}
                   <Text style={styles.nameText}>
                     {d.vehicle_make} {d.vehicle_model}

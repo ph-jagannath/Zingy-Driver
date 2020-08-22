@@ -240,7 +240,7 @@ export default class userDrawer extends Component {
             </View>
           </TouchableOpacity>
           {/* 4 soppnig container */}
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={
               () => this.props.navigation.navigate("Shopping")
               // () =>
@@ -273,7 +273,7 @@ export default class userDrawer extends Component {
                 size={26}
               />
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           {/* 4 cancel booking container */}
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("notifications")}

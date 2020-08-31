@@ -98,16 +98,6 @@ export default class pendingDetails extends Component {
       <View style={styles.bgContainer}>
         {/* upper container */}
         <View style={styles.upperContainer}>
-          {/* <Icon
-            name="forum-outline"
-            color={global.COLOR.PRIMARY}
-            reverse
-            type="material-community"
-            size={20}
-            iconStyle={styles.icon}
-            Component={TouchableOpacity}
-            containerStyle={styles.iconContainer}
-          /> */}
           <View>
             {/* name container */}
             <View style={styles.nameContainer}>
@@ -117,16 +107,20 @@ export default class pendingDetails extends Component {
                 Requested at :{d.booking_date}, {""}
                 {d.booking_time}
               </Text>
-              <Text style={styles.addressText}>
-                Vehicle color : {d.vehicle_color}
-              </Text>
-              <Text style={styles.addressText}>
-                Plate Number : {d.vehicle_plate_code} - {""}
-                {d.vehicle_plate_number}
-              </Text>
-              <Text style={styles.addressText}>
-                No of times washed before : {d.no_of_washs}
-              </Text>
+              {d.user_vehicle_id && (
+                <>
+                  <Text style={styles.addressText}>
+                    Vehicle color : {d.vehicle_color}
+                  </Text>
+                  <Text style={styles.addressText}>
+                    Plate Number : {d.vehicle_plate_code} - {""}
+                    {d.vehicle_plate_number}
+                  </Text>
+                  <Text style={styles.addressText}>
+                    No of times washed before : {d.no_of_washs}
+                  </Text>
+                </>
+              )}
             </View>
             {/* address container */}
             <View style={styles.nameContainer}>

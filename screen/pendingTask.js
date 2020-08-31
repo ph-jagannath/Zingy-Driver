@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Image,
   Alert,
+  RefreshControl,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -81,6 +82,14 @@ export default class pendingTask extends Component {
       <View style={styles.bgContainer}>
         <FlatList
           data={this.state.data}
+          refreshControl={
+            <RefreshControl
+              refreshing={false}
+              onRefresh={() => {
+                this.getData();
+              }}
+            />
+          }
           ListEmptyComponent={
             <Text
               style={{ alignSelf: "center", color: "#000", marginTop: 200 }}
@@ -111,13 +120,11 @@ export default class pendingTask extends Component {
                 </View>
                 <View>
                   <Text style={styles.nameText}>
-                    {d.plan_name}
-                    {/* {d.vehicle_type == "1" ? d.plan_name : "Two Wheeler Wash"} */}
+                    {d.vehicle_type ? d.plan_name : "Two Wheeler Wash"}
                   </Text>
-                  {/* <Text style={styles.nameText}>{d.first_name}</Text> */}
-                  <Text style={styles.nameText}>
-                    {d.vehicle_make} {d.vehicle_model}
-                  </Text>
+                  {d.vehicle_type && (
+                    <Text style={styles.nameText}>{d.vehicle_model}</Text>
+                  )}
                   <Text style={styles.addressText}>
                     Location : {d.booking_address}
                   </Text>

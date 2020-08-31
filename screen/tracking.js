@@ -422,18 +422,34 @@ export default class tracking extends Component {
         {/* bottom Container */}
         <View style={styles.bottomContainer}>
           <View style={styles.flatlist}>
-            <Text style={styles.addressText}>
-              Car : {d.vehicle_make} {d.vehicle_model}
-            </Text>
-            <Text style={styles.addressText}>Color : {d.vehicle_color}</Text>
-            <Text style={styles.addressText}>
-              Plate Number : {d.vehicle_plate_code} - {d.vehicle_plate_number}
-            </Text>
-            <View style={styles.packageContainer}>
-              <Text style={{ marginHorizontal: 10, width: 300 }}>
-                Package : {d.plan_name} - {d.plan_service}
-              </Text>
-            </View>
+            {d.user_vehicle_id ? (
+              <>
+                <Text style={styles.addressText}>Car : {d.vehicle_model}</Text>
+                <Text style={styles.addressText}>
+                  Color : {d.vehicle_color}
+                </Text>
+                <Text style={styles.addressText}>
+                  Plate Number : {d.vehicle_plate_code} -{" "}
+                  {d.vehicle_plate_number}
+                </Text>
+                <View style={styles.packageContainer}>
+                  <Text style={{ marginHorizontal: 10, width: 300 }}>
+                    Package : {d.plan_name} - {d.plan_service}
+                  </Text>
+                </View>
+              </>
+            ) : (
+              <>
+                <Text
+                  style={[
+                    styles.addressText,
+                    { color: global.COLOR.PRIMARY_DARK },
+                  ]}
+                >
+                  Two Wheeler Wash
+                </Text>
+              </>
+            )}
             <View style={styles.mobileContainer}>
               <Icon
                 name="cellphone-android"

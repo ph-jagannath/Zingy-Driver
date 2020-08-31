@@ -228,45 +228,37 @@ export default class setting extends Component {
           />
         </TouchableOpacity>
         {/* contact us */}
-        <TouchableOpacity
-          style={styles.aboutContainer}
-          // onPress={() =>
-          // Linking.openURL(`mailto: ${global.CONSTANT.SUPPORT_MAIL}`)
-          // this.props.navigation.navigate("contact")
-          // }
-        >
-          <View>
-            <Text style={styles.aboutText}>Change Language</Text>
+        {/* <View>
+          <Text style={styles.aboutText}>Change Language</Text>
 
-            <RadioButton.Group
-              onValueChange={async (value) => {
-                await AsyncStorage.setItem("LANGUAGE", value, (err) => {
-                  if (err) {
-                    console.log("an error store language async");
-                    throw err;
-                  }
-                  console.log("Language Stored");
-                  i18n.locale = value;
-                  this.setState({ language: value });
-                }).catch((err) => {
-                  console.log("error is: " + err);
-                });
-              }}
-              value={this.state.language}
-            >
-              <View style={{ paddingLeft: 20 }}>
-                <View style={styles.radioItem}>
-                  <RadioButton color={global.COLOR.PRIMARY} value="en" />
-                  <Text style={styles.radioText}>English</Text>
-                </View>
-                <View style={styles.radioItem}>
-                  <RadioButton color={global.COLOR.PRIMARY} value="it" />
-                  <Text style={styles.radioText}>Italian</Text>
-                </View>
+          <RadioButton.Group
+            onValueChange={async (value) => {
+              await AsyncStorage.setItem("LANGUAGE", value, (err) => {
+                if (err) {
+                  console.log("an error store language async");
+                  throw err;
+                }
+                console.log("Language Stored");
+                i18n.locale = value;
+                this.setState({ language: value });
+              }).catch((err) => {
+                console.log("error is: " + err);
+              });
+            }}
+            value={this.state.language}
+          >
+            <View style={{ paddingLeft: 20 }}>
+              <View style={styles.radioItem}>
+                <RadioButton color={global.COLOR.PRIMARY} value="en" />
+                <Text style={styles.radioText}>English</Text>
               </View>
-            </RadioButton.Group>
-          </View>
-        </TouchableOpacity>
+              <View style={styles.radioItem}>
+                <RadioButton color={global.COLOR.PRIMARY} value="it" />
+                <Text style={styles.radioText}>Italian</Text>
+              </View>
+            </View>
+          </RadioButton.Group>
+        </View> */}
       </View>
     );
   }

@@ -23,7 +23,7 @@ export default class home extends Component {
   };
   constructor(props) {
     super(props);
-    // this._getLocationAsync();
+    this._getLocationAsync();
     this.state = {
       alert: false,
       switchValue: true,
@@ -38,6 +38,7 @@ export default class home extends Component {
       key: 0,
     };
   }
+
   _onMapReady = () => this.setState({ marginBottom: 0 });
 
   _getLocationAsync = async () => {
@@ -54,6 +55,7 @@ export default class home extends Component {
     this.setState({
       latitude: location.coords.latitude,
       longitude: location.coords.longitude,
+      marginBottom: 0,
       key: Math.random(),
       loading: false,
     });

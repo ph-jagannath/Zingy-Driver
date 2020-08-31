@@ -142,7 +142,10 @@ export default class taskDetails extends Component {
             <View
               style={{ flexDirection: "row", justifyContent: "flex-start" }}
             >
-              <Image source={{ uri: d.make_logo }} style={styles.logo} />
+              <Image
+                source={{ uri: d.vehicle_make_logo }}
+                style={styles.logo}
+              />
               <View style={styles.textContainer}>
                 <Text style={styles.nameText}>{d.first_name}</Text>
                 <Text style={styles.mobileText}>

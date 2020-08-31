@@ -120,9 +120,9 @@ export default class pendingTask extends Component {
                 </View>
                 <View>
                   <Text style={styles.nameText}>
-                    {d.vehicle_type ? d.plan_name : "Two Wheeler Wash"}
+                    {d.vehicle_make !== "" ? d.plan_name : "Two Wheeler Wash"}
                   </Text>
-                  {d.vehicle_type && (
+                  {d.vehicle_make !== "" && (
                     <Text style={styles.nameText}>{d.vehicle_model}</Text>
                   )}
                   <Text style={styles.addressText}>

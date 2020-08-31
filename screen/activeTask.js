@@ -113,7 +113,7 @@ export default class activeTask extends Component {
                 <View>
                   <Text style={styles.nameText}>{d.first_name}</Text>
                   <Text style={styles.nameText}>
-                    {d.vehicle_type ? d.plan_name : "Two Wheeler Wash"}
+                    {d.vehicle_make !== "" ? d.plan_name : "Two Wheeler Wash"}
                   </Text>
                   <Text style={styles.addressText}>{d.booking_address}</Text>
                   <View style={styles.distanceContainer}>

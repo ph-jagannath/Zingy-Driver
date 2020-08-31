@@ -130,19 +130,37 @@ export default class confirm extends Component {
                 />
                 <Text style={styles.numberText}>{d.mobile}</Text>
               </View>
-              <Text style={styles.addressText}>
-                Car : {d.vehicle_make} {d.vehicle_model}
-              </Text>
-              <Text style={styles.addressText}>Color : {d.vehicle_color}</Text>
-              <Text style={styles.addressText}>
-                Plate Number : {d.vehicle_plate_code} - {d.vehicle_plate_number}
-              </Text>
-              <View style={styles.packageContainer}>
-                <Text style={styles.addressText}>Package :</Text>
-                <Text style={styles.addressText}>
-                  {d.plan_name} - {d.plan_service}
-                </Text>
-              </View>
+              {d.vehicle_make !== "" ? (
+                <>
+                  <Text style={styles.addressText}>
+                    Car : {d.vehicle_model}
+                  </Text>
+                  <Text style={styles.addressText}>
+                    Color : {d.vehicle_color}
+                  </Text>
+                  <Text style={styles.addressText}>
+                    Plate Number : {d.vehicle_plate_code} -{" "}
+                    {d.vehicle_plate_number}
+                  </Text>
+                  <View style={styles.packageContainer}>
+                    <Text style={styles.addressText}>Package :</Text>
+                    <Text style={styles.addressText}>
+                      {d.plan_name} - {d.plan_service}
+                    </Text>
+                  </View>
+                </>
+              ) : (
+                <>
+                  <Text
+                    style={[
+                      styles.addressText,
+                      { color: global.COLOR.PRIMARY_DARK },
+                    ]}
+                  >
+                    Two Wheeler Wash
+                  </Text>
+                </>
+              )}
             </View>
           </View>
           <View style={{ flex: 0.7 }}>

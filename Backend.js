@@ -9,14 +9,14 @@ class Backend {
 
   constructor() {
     firebase.initializeApp({
-      apiKey: "AIzaSyCOdzL39DmbFOcPnk-TuEkOO8q8CNgxw5o",
-      authDomain: "carnawashapp-1576115536680.firebaseapp.com",
-      databaseURL: "https://carnawashapp-1576115536680.firebaseio.com",
-      projectId: "carnawashapp-1576115536680",
-      storageBucket: "carnawashapp-1576115536680.appspot.com",
-      messagingSenderId: "229909866496",
-      appId: "1:229909866496:web:03ceb34b9eb880b20590e5",
-      measurementId: "G-WPYM7ZZB24",
+      apiKey: "AIzaSyBKeDPnuTSTNiElCtke3R6WQ06JZoWId2A",
+      authDomain: "dacwash.firebaseapp.com",
+      databaseURL: "https://dacwash.firebaseio.com",
+      projectId: "dacwash",
+      storageBucket: "dacwash.appspot.com",
+      messagingSenderId: "244777178350",
+      appId: "1:244777178350:web:ec2ee54e5cf047d5348fff",
+      measurementId: "G-D2MN5CS9GW",
     });
 
     firebase.auth().onAuthStateChanged((user) => {
@@ -44,12 +44,18 @@ class Backend {
 
   loadMessages(callback) {
     let d = global.CHAT_DETAILS;
+    let chat_id =
+      Number(d.user_id) > Number(d.booking_driver_id)
+        ? `${d.user_id}_${d.booking_driver_id}`
+        : `${d.booking_driver_id}_${d.user_id}`;
+
     this.messageRef = firebase
       .database()
       .ref()
       .child("ChatHistory")
-      .child(`${d.user_id}_${d.booking_driver_id}`);
+      .child(`${chat_id}`);
     this.messageRef.off();
+
     const onRecieve = (data) => {
       const msg = data.val();
 

@@ -60,9 +60,6 @@ export default class shopping extends Component {
       <WebView
         originWhitelist={["*"]}
         scalesPageToFit={true}
-        sharedCookiesEnabled={true}
-        automaticallyAdjustContentInsets={true}
-        mixedContentMode="always"
         style={{ flex: 1 }}
         cacheEnabled={false}
         cacheMode="LOAD_NO_CACHE"
@@ -75,13 +72,8 @@ export default class shopping extends Component {
           />
         )}
         showsVerticalScrollIndicator={false}
-        // onLoadEnd={syntheticEvent => {
-        //   // update component to be aware of loading status
-        //   const { nativeEvent } = syntheticEvent;
-        //   this.isLoading = nativeEvent.loading;
-        // }}
         source={{
-          uri: `https://carnawashapp.com/webservices/service_provider_login/${global.USER.user_id}`,
+          uri: `https://dacwash.com/webservices/service_provider_login/${global.USER.user_id}`,
         }}
       />
     );

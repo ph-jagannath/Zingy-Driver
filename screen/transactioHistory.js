@@ -15,7 +15,7 @@ import i18n from "i18n-js";
 
 export default class transactioHistory extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "My Transaction History",
+    title: "Transaction History",
     headerStyle: {
       backgroundColor: global.COLOR.PRIMARY,
     },

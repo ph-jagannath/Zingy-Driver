@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Image,
   Alert,
-  Switch
+  Switch,
 } from "react-native";
 import { Icon, Overlay, Button } from "react-native-elements";
 import logo from "../assets/logo.png";
@@ -20,7 +20,7 @@ import moment from "moment";
 
 export default class map extends Component {
   static navigationOptions = {
-    header: null
+    header: null,
   };
   constructor(props) {
     super(props);
@@ -35,7 +35,7 @@ export default class map extends Component {
       longitude: 0,
       latitudeDelta: 0.006,
       longitudeDelta: 0.003,
-      marginBottom: 1
+      marginBottom: 1,
     };
   }
   _onMapReady = () => this.setState({ marginBottom: 0 });
@@ -64,13 +64,13 @@ export default class map extends Component {
             {/* logo container */}
             <View style={styles.logo}>
               <Image
-                source={logo}
+                source={global.ASSETS.LOGO_WHITE}
                 style={{
                   width: 100,
                   height: 80,
                   resizeMode: "contain",
                   //   justifyContent: "center",
-                  marginLeft: 90
+                  marginLeft: 65,
                 }}
               />
             </View>
@@ -94,9 +94,9 @@ export default class map extends Component {
           style={{
             flex: 1,
 
-            marginBottom: this.state.marginBottom
+            marginBottom: this.state.marginBottom,
           }}
-          ref={ref => {
+          ref={(ref) => {
             this.mapRef = ref;
           }}
           onLayout={() =>
@@ -104,16 +104,16 @@ export default class map extends Component {
               [
                 {
                   latitude: Number(d.user_lat),
-                  longitude: Number(d.user_lon)
+                  longitude: Number(d.user_lon),
                 },
                 {
                   latitude: Number(d.booking_lat),
-                  longitude: Number(d.booking_long)
-                }
+                  longitude: Number(d.booking_long),
+                },
               ],
               {
                 edgePadding: { top: 0, right: 0, bottom: 0, left: 0 },
-                animated: true
+                animated: true,
               }
             )
           }
@@ -121,14 +121,14 @@ export default class map extends Component {
           <MapView.Marker
             coordinate={{
               latitude: Number(d.user_lat),
-              longitude: Number(d.user_lon)
+              longitude: Number(d.user_lon),
             }}
             pinColor="#c10000"
           />
           <MapView.Marker
             coordinate={{
               latitude: Number(d.booking_lat),
-              longitude: Number(d.booking_long)
+              longitude: Number(d.booking_long),
             }}
             pinColor="#004000"
           />
@@ -136,12 +136,12 @@ export default class map extends Component {
             coordinates={[
               {
                 latitude: Number(d.user_lat),
-                longitude: Number(d.user_lon)
+                longitude: Number(d.user_lon),
               },
               {
                 latitude: Number(d.booking_lat),
-                longitude: Number(d.booking_long)
-              }
+                longitude: Number(d.booking_long),
+              },
             ]}
             strokeWidth={3}
             strokeColor="blue"
@@ -155,58 +155,58 @@ export default class map extends Component {
 const styles = StyleSheet.create({
   bgContainer: {
     flex: 1,
-    width: null
+    width: null,
   },
   headerContainer: {
     backgroundColor: global.COLOR.PRIMARY,
     height: 50,
     justifyContent: "flex-start",
     flexDirection: "row",
-    margin: 20
+    margin: 20,
   },
   menuIcon: {
     paddingTop: 20,
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
   },
   switch: {
-    marginTop: 25
+    marginTop: 25,
   },
   logo: {
     // marginTop: 10
   },
   header: {
-    backgroundColor: global.COLOR.PRIMARY
+    backgroundColor: global.COLOR.PRIMARY,
   },
   overlay: {
     backgroundColor: "#fff",
     marginTop: 70,
-    justifyContent: "space-around"
+    justifyContent: "space-around",
     // flex: 1,
     // justifyContent: "flex-end"
   },
   overlayContainer: {
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
   },
   overlayTitle: {
     textAlign: "center",
     fontWeight: "normal",
     fontSize: 16,
-    color: "#000"
+    color: "#000",
     // textTransform: "capitalize"
   },
   reasonText: {
     color: global.COLOR.PRIMARY,
     fontSize: 20,
-    margin: 14
+    margin: 14,
   },
   radioButtonContainer: {
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
   },
   radioText: {
     fontSize: 18,
     color: "#000",
-    marginTop: 5
+    marginTop: 5,
   },
   buttonContainer: {
     // alignSelf: "center",
@@ -215,22 +215,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     marginHorizontal: -10,
-    marginBottom: -16
+    marginBottom: -16,
     // marginHorizontal: 70
   },
   yesButton: {
     color: global.COLOR.PRIMARY,
     marginTop: 15,
-    alignSelf: "center"
+    alignSelf: "center",
   },
   noButton: {
     color: "red",
     marginTop: 15,
-    textAlign: "center"
+    textAlign: "center",
   },
   divider: {
     height: 54,
     width: 1,
-    backgroundColor: "gray"
-  }
+    backgroundColor: "gray",
+  },
 });

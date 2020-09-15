@@ -1,22 +1,8 @@
 import React, { Component } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Image,
-  Alert,
-  Switch,
-} from "react-native";
-import { Icon, Overlay, Button } from "react-native-elements";
-import logo from "../assets/logo.png";
+import { StyleSheet, View, TouchableOpacity, Image } from "react-native";
+import { Icon } from "react-native-elements";
 import MapView from "react-native-maps";
-import { RadioButton, Divider, Snackbar } from "react-native-paper";
-import * as Permissions from "expo-permissions";
-import * as Location from "expo-location";
-import axios from "axios";
 import global from "../global";
-import moment from "moment";
 
 export default class map extends Component {
   static navigationOptions = {
@@ -42,7 +28,6 @@ export default class map extends Component {
 
   render() {
     let d = this.props.navigation.getParam("map", "no-data");
-    const { checked } = this.state;
     return (
       // bg container
       <View style={styles.bgContainer}>

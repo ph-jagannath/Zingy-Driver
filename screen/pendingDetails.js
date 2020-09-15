@@ -1,15 +1,7 @@
 import React, { Component } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  FlatList,
-  TouchableWithoutFeedback,
-  Image,
-  Alert,
-} from "react-native";
-import MapView, { Marker } from "react-native-maps";
-import { Icon, Button } from "react-native-elements";
+import { Text, StyleSheet, View, Image, Alert } from "react-native";
+import MapView from "react-native-maps";
+import { Button } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import global from "../global";
 import axios from "axios";
@@ -36,37 +28,17 @@ export default class pendingDetails extends Component {
     };
   }
 
-  // _getLocationAsync = async () => {
-  //   console.log(this.props.navigation.state.routeName);
-
-  //   let { status } = await Permissions.askAsync(Permissions.LOCATION);
-  //   if (status !== "granted") {
-  //     this.setState({
-  //       errorMessage: "Permission to access location was denied"
-  //     });
-  //   }
-
-  //   let location = await Location.getCurrentPositionAsync({});
-  //   this.setState({
-  //     latitude: location.coords.latitude,
-  //     longitude: location.coords.longitude,
-  //     loading: false
-  //   });
-  // };
   startBooking = (v) => {
     this.setState({
       buttonLoading: true,
     });
-    // this.props.navigation.navigate("UserApp");
     axios({
       method: "post",
       url: "booking_start",
       data: { booking_id: v.booking_id, user_id: global.USER.user_id },
     }).then(
       function (response) {
-        console.log(response.data);
         if (response.data.response.status) {
-          console.log(response.data.response);
           global.BOOKING_TRACK_STATUS[0] = v.status;
           this.setState({ buttonLoading: false });
           this.props.navigation.navigate("Tracking", {
@@ -104,8 +76,7 @@ export default class pendingDetails extends Component {
               <Text style={styles.nameText}>{d.first_name}</Text>
               <Text style={styles.addressText}>Contact : {d.mobile}</Text>
               <Text style={styles.addressText}>
-                Requested at :{d.booking_date}, {""}
-                {d.booking_time}
+                Requested at : {d.booking_date} at {d.booking_time}
               </Text>
               {d.user_vehicle_id && (
                 <>
@@ -113,8 +84,7 @@ export default class pendingDetails extends Component {
                     Vehicle color : {d.vehicle_color}
                   </Text>
                   <Text style={styles.addressText}>
-                    Plate Number : {d.vehicle_plate_code} - {""}
-                    {d.vehicle_plate_number}
+                    Plate Number : {d.vehicle_plate_number}
                   </Text>
                   <Text style={styles.addressText}>
                     No of times washed before : {d.no_of_washs}

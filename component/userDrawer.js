@@ -3,28 +3,18 @@ import {
   Text,
   StyleSheet,
   View,
-  SafeAreaView,
   TouchableOpacity,
   AsyncStorage,
-  BackHandler,
   Alert,
-  ScrollView,
-  ImageBackground,
-  Share,
 } from "react-native";
-import { Avatar, Icon, Image } from "react-native-elements";
+import { Avatar, Icon } from "react-native-elements";
 import profile from "../assets/profile.png";
 import global from "../global";
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import axios from "axios";
-import * as WebBrowser from "expo-web-browser";
 import i18n from "i18n-js";
 
-const DATA = {
-  profile_image: "https://placeimg.com/640/480/any",
-  name: "Welcome",
-};
 export default class userDrawer extends Component {
   constructor(props) {
     super(props);
@@ -36,10 +26,6 @@ export default class userDrawer extends Component {
 
   startInterval = async () => {
     setInterval(async () => {
-      // get current Location
-      // if (global.INTERVALS[0] == 1) {
-      //   this.fetchNewBookings();
-      // }
       if (global.INTERVALS[0] == 1) {
         this.updateLocation();
       }
@@ -75,7 +61,7 @@ export default class userDrawer extends Component {
         longitude: lng,
       },
     }).then(
-      function (response) {
+      function () {
         // console.log(response.data);
       }.bind(this)
     );
@@ -241,13 +227,7 @@ export default class userDrawer extends Component {
           </TouchableOpacity>
           {/* 4 soppnig container */}
           <TouchableOpacity
-            onPress={
-              () => this.props.navigation.navigate("Shopping")
-              // () =>
-              //   WebBrowser.openBrowserAsync(
-              //     `https://carnawashapp.com/webservices/service_provider_login/${global.USER.user_id}`
-              //   )
-            }
+            onPress={() => this.props.navigation.navigate("Shopping")}
             style={{
               backgroundColor:
                 this.props.activeItemKey == "Shopping"

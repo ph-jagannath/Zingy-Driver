@@ -10,7 +10,6 @@ import {
   RefreshControl,
 } from "react-native";
 import { Icon } from "react-native-elements";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import global from "../global";
 import axios from "axios";
 import moment from "moment";
@@ -65,13 +64,11 @@ export default class pendingTask extends Component {
       data: { user_id: global.USER.user_id, type: "1" },
     }).then(
       function (response) {
-        console.log(response.data);
         if (response.data.response.status) {
-          console.log(response.data.response);
           this.setState({ data: response.data.response.data });
         } else {
           this.setState({ buttonLoading: false });
-          Alert.alert("Car Wash", response.data.response.message);
+          // Alert.alert("Car Wash", response.data.response.message);
         }
       }.bind(this)
     );
@@ -81,6 +78,7 @@ export default class pendingTask extends Component {
     return (
       <View style={styles.bgContainer}>
         <FlatList
+          showsVerticalScrollIndicator={false}
           data={this.state.data}
           refreshControl={
             <RefreshControl
@@ -101,9 +99,17 @@ export default class pendingTask extends Component {
             <TouchableWithoutFeedback
               onPress={() => {
                 global.BOOKING_TRACK_STATUS[0] = d.status;
-                this.props.navigation.navigate("PendingDetails", {
-                  data: d,
-                });
+                if (moment(d.booking_date).isSame(moment(), "day")) {
+                  if (d.status == "0" || d.status == "1") {
+                    this.props.navigation.navigate("PendingDetails", {
+                      data: d,
+                    });
+                  } else if (d.status == "5" || d.status == "9") {
+                    this.props.navigation.navigate("Tracking", {
+                      data: d,
+                    });
+                  }
+                }
               }}
             >
               <View style={styles.faltlist}>
@@ -123,7 +129,9 @@ export default class pendingTask extends Component {
                     {d.vehicle_make !== "" ? d.plan_name : "Two Wheeler Wash"}
                   </Text>
                   {d.vehicle_make !== "" && (
-                    <Text style={styles.nameText}>{d.vehicle_model}</Text>
+                    <Text style={styles.nameText}>
+                      {d.vehicle_make} {d.vehicle_model}
+                    </Text>
                   )}
                   <Text style={styles.addressText}>
                     Location : {d.booking_address}
@@ -144,7 +152,37 @@ export default class pendingTask extends Component {
                   <View style={styles.distanceContainer}>
                     <Text>Status : </Text>
                     <Text style={styles.nameText}>
-                      {d.status == "1" ? "On Demand" : "Schedule"}
+                      {d.status == "0"
+                        ? "Initiated"
+                        : d.status == "1"
+                        ? "Scheduled"
+                        : d.status == "2"
+                        ? "Completed"
+                        : d.status == "3"
+                        ? "Canceled"
+                        : d.status == "4"
+                        ? "Refunded"
+                        : d.status == "5"
+                        ? "Start Wash"
+                        : d.status == "6"
+                        ? "Cancelled"
+                        : d.status == "7"
+                        ? "Cancelled"
+                        : d.status == "8"
+                        ? "Cancelled"
+                        : d.status == "9"
+                        ? "Reached"
+                        : ""}
+                    </Text>
+                  </View>
+                  <View style={styles.distanceContainer}>
+                    <Text>Type : </Text>
+                    <Text style={styles.nameText}>
+                      {d.booking_type == "1"
+                        ? "On Demand"
+                        : d.booking_type == "2"
+                        ? "Schedule"
+                        : ""}
                     </Text>
                   </View>
                 </View>

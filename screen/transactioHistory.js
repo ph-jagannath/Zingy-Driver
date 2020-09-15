@@ -120,7 +120,9 @@ export default class transactioHistory extends Component {
               </View>
 
               <View style={styles.textContainer}>
-                <Text style={styles.nameText}> {d.amount} AUD</Text>
+                <Text style={styles.nameText}>
+                  {d.amount} {global.CONSTANT.CURRENCY}
+                </Text>
               </View>
             </View>
           )}

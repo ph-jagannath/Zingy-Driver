@@ -5,11 +5,9 @@ import {
   View,
   TouchableOpacity,
   Image,
-  FlatList,
   Alert,
 } from "react-native";
 import { Icon, Overlay, Button, Avatar } from "react-native-elements";
-import logo from "../assets/logo.png";
 import MapView from "react-native-maps";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
@@ -50,7 +48,7 @@ export default class tracking extends Component {
   getPermissionAsync = async () => {
     if (global.CONSTANT.DEVICETYPE == "ios") {
       // const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-      const { status, permissions } = await Permissions.askAsync(
+      const { status } = await Permissions.askAsync(
         Permissions.CAMERA,
         Permissions.CAMERA_ROLL
       );
@@ -68,12 +66,6 @@ export default class tracking extends Component {
 
   // Image Picker function
   _pickImage = async (v) => {
-    let field = this.state.field;
-
-    let { status } = await Permissions.askAsync(
-      // Permissions.CAMERA
-      Permissions.CAMERA_ROLL
-    );
     // console.log(status);
     let result = await ImagePicker.launchCameraAsync({
       quality: 0.2,
@@ -142,7 +134,7 @@ export default class tracking extends Component {
       this.state.before_image4 == ""
     ) {
       Alert.alert(
-        "CarnaWashApp",
+        "Dacwash",
         "Please Upload all images of the vehicle before starting wash"
       );
     } else {
@@ -178,8 +170,6 @@ export default class tracking extends Component {
         data,
       }).then(
         function (response) {
-          console.log(response.data);
-
           this.setState({ before_visible: false });
           if (response.data.response.status) {
             this.startWash(v);
@@ -208,7 +198,6 @@ export default class tracking extends Component {
       },
     }).then(
       function (response) {
-        console.log(response.data);
         if (response.data.response.status) {
           global.BOOKING_TRACK_STATUS[0] = "5";
           this.setState({ buttonLoading: false });
@@ -228,7 +217,7 @@ export default class tracking extends Component {
       this.state.after_image4 == ""
     ) {
       Alert.alert(
-        "CarnaWashApp",
+        "Dacwash",
         "Please Upload all images of the vehicle before starting wash"
       );
     } else {
@@ -313,7 +302,7 @@ export default class tracking extends Component {
 
   render() {
     let d = this.props.navigation.getParam("data", "no-data");
-
+    console.log(global.BOOKING_TRACK_STATUS);
     return (
       // background container
       <View style={styles.bgContainer}>
@@ -422,7 +411,7 @@ export default class tracking extends Component {
         {/* bottom Container */}
         <View style={styles.bottomContainer}>
           <View style={styles.flatlist}>
-            {d.user_vehicle_id ? (
+            {d.vehicle_make !== "" ? (
               <>
                 <Text style={styles.addressText}>Car : {d.vehicle_model}</Text>
                 <Text style={styles.addressText}>
@@ -468,28 +457,56 @@ export default class tracking extends Component {
               buttonStyle={styles.buttonStyle}
               loading={this.state.buttonLoading}
               title={
-                global.BOOKING_TRACK_STATUS[0] == "1"
+                global.BOOKING_TRACK_STATUS[0] == "0"
                   ? "REACHED"
-                  : global.BOOKING_TRACK_STATUS[0] == "9"
-                  ? "START WASH"
+                  : global.BOOKING_TRACK_STATUS[0] == "1"
+                  ? "REACHED"
+                  : global.BOOKING_TRACK_STATUS[0] == "2"
+                  ? "Completed"
+                  : global.BOOKING_TRACK_STATUS[0] == "3"
+                  ? "Canceled"
+                  : global.BOOKING_TRACK_STATUS[0] == "4"
+                  ? "Refunded"
                   : global.BOOKING_TRACK_STATUS[0] == "5"
-                  ? "COMPLETE WASH"
-                  : "COMPLETED"
+                  ? "Comple Wash"
+                  : global.BOOKING_TRACK_STATUS[0] == "6"
+                  ? "Cancelled"
+                  : global.BOOKING_TRACK_STATUS[0] == "7"
+                  ? "Cancelled"
+                  : global.BOOKING_TRACK_STATUS[0] == "8"
+                  ? "Cancelled"
+                  : global.BOOKING_TRACK_STATUS[0] == "9"
+                  ? "Start Wash"
+                  : ""
               }
               titleStyle={styles.buttonTitle}
               TouchableComponent={TouchableOpacity}
               onPress={() =>
-                global.BOOKING_TRACK_STATUS[0] == "1"
+                global.BOOKING_TRACK_STATUS[0] == "0"
                   ? this.startMoving(d)
-                  : global.BOOKING_TRACK_STATUS[0] == "9"
-                  ? this.setState({
-                      before_visible: true,
-                    })
+                  : global.BOOKING_TRACK_STATUS[0] == "1"
+                  ? this.startMoving(d)
+                  : global.BOOKING_TRACK_STATUS[0] == "2"
+                  ? Alert.alert("Dacwash", "Booking has been completed")
+                  : global.BOOKING_TRACK_STATUS[0] == "3"
+                  ? Alert.alert("Dacwash", "Booking has been Canceled")
+                  : global.BOOKING_TRACK_STATUS[0] == "4"
+                  ? Alert.alert("Dacwash", "Booking has been Refunded")
                   : global.BOOKING_TRACK_STATUS[0] == "5"
                   ? this.setState({
                       after_visible: true,
                     })
-                  : Alert.alert("CARNAWASHAPP", "Booking has been completed")
+                  : global.BOOKING_TRACK_STATUS[0] == "6"
+                  ? Alert.alert("Dacwash", "Booking has been Canceled")
+                  : global.BOOKING_TRACK_STATUS[0] == "7"
+                  ? Alert.alert("Dacwash", "Booking has been Canceled")
+                  : global.BOOKING_TRACK_STATUS[0] == "8"
+                  ? Alert.alert("Dacwash", "Booking has been Canceled")
+                  : global.BOOKING_TRACK_STATUS[0] == "9"
+                  ? this.setState({
+                      before_visible: true,
+                    })
+                  : this.props.navigation.goback()
               }
             />
           </View>

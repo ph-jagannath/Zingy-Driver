@@ -9,7 +9,6 @@ import {
   RefreshControl,
 } from "react-native";
 import { Icon } from "react-native-elements";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import global from "../global";
 import axios from "axios";
 
@@ -66,7 +65,7 @@ export default class activeTask extends Component {
           this.setState({ data: response.data.response.data });
         } else {
           this.setState({ buttonLoading: false });
-          Alert.alert("Car Wash", response.data.response.message);
+          // Alert.alert("Car Wash", response.data.response.message);
         }
       }.bind(this)
     );
@@ -97,16 +96,19 @@ export default class activeTask extends Component {
               onPress={() => {
                 console.log(d);
                 global.BOOKING_TRACK_STATUS[0] = d.status;
-                this.props.navigation.navigate(
-                  d.status == "6" || d.status == "7" || d.status == "8"
-                    ? "PendingDetails"
-                    : d.status == "9" || d.status == "5"
-                    ? "Tracking"
-                    : "taskDetails",
-                  {
+                if (d.status == "0" || d.status == "1") {
+                  this.props.navigation.navigate("PendingDetails", {
                     data: d,
-                  }
-                );
+                  });
+                } else if (d.status == "5" || d.status == "9") {
+                  this.props.navigation.navigate("Tracking", {
+                    data: d,
+                  });
+                } else {
+                  this.props.navigation.navigate("taskDetails", {
+                    data: d,
+                  });
+                }
               }}
             >
               <View style={styles.faltlist}>
@@ -131,13 +133,37 @@ export default class activeTask extends Component {
                   <View style={styles.distanceContainer}>
                     <Text>Status : </Text>
                     <Text style={styles.nameText}>
-                      {d.status == "9"
-                        ? "Reached"
+                      {d.status == "0"
+                        ? "Initiated"
+                        : d.status == "1"
+                        ? "Scheduled"
                         : d.status == "2"
                         ? "Completed"
+                        : d.status == "3"
+                        ? "Canceled"
+                        : d.status == "4"
+                        ? "Refunded"
                         : d.status == "5"
                         ? "Start Wash"
-                        : d.status}
+                        : d.status == "6"
+                        ? "Cancelled"
+                        : d.status == "7"
+                        ? "Cancelled"
+                        : d.status == "8"
+                        ? "Cancelled"
+                        : d.status == "9"
+                        ? "Reached"
+                        : ""}
+                    </Text>
+                  </View>
+                  <View style={styles.distanceContainer}>
+                    <Text>Type : </Text>
+                    <Text style={styles.nameText}>
+                      {d.booking_type == "1"
+                        ? "On Demand"
+                        : d.booking_type == "2"
+                        ? "Schedule"
+                        : ""}
                     </Text>
                   </View>
                 </View>

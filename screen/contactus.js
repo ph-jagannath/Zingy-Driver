@@ -86,7 +86,7 @@ export default class ContactUs extends Component {
         if (response.data.response.status) {
           // this.props.navigation.navigate("Home");
           Alert.alert(
-            "CARNAWASHAPP",
+            "Dacwash",
             response.data.response.message,
             [
               {
@@ -99,7 +99,7 @@ export default class ContactUs extends Component {
             { cancelable: false }
           );
         } else {
-          Alert.alert("CARNAWASHAPP", response.data.response.message);
+          Alert.alert("Dacwash", response.data.response.message);
         }
       }.bind(this)
     );

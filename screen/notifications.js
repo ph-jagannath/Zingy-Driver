@@ -4,14 +4,12 @@ import {
   StyleSheet,
   View,
   FlatList,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 import { Icon, Avatar } from "react-native-elements";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import global from "../global";
 import TimeAgo from "react-native-timeago";
 import axios from "axios";
-import moment from "moment";
 
 export default class notifications extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -30,13 +28,13 @@ export default class notifications extends Component {
         onPress={() => navigation.openDrawer()}
       />
     ),
-    headerRight: (
-      <TouchableOpacity onPress={() => {}}>
-        <Text style={{ color: "#fff", marginHorizontal: 10, fontSize: 16 }}>
-          Clear All
-        </Text>
-      </TouchableOpacity>
-    ),
+    // headerRight: (
+    //   <TouchableOpacity onPress={() => {}}>
+    //     <Text style={{ color: "#fff", marginHorizontal: 10, fontSize: 16 }}>
+    //       Clear All
+    //     </Text>
+    //   </TouchableOpacity>
+    // ),
 
     headerTintColor: "#fff",
 
@@ -56,7 +54,6 @@ export default class notifications extends Component {
     this.setState({
       buttonLoading: true,
     });
-    // this.props.navigation.navigate("UserApp");
     axios({
       method: "post",
       url: "notification_list_driver",
@@ -67,13 +64,11 @@ export default class notifications extends Component {
       },
     }).then(
       function (response) {
-        console.log(response.data);
         if (response.data.response.status) {
-          console.log(response.data.response);
           this.setState({ data: response.data.response.data });
         } else {
           this.setState({ buttonLoading: false });
-          Alert.alert("Car Wash", response.data.response.message);
+          // Alert.alert("Car Wash", response.data.response.message);
         }
       }.bind(this)
     );
@@ -96,7 +91,7 @@ export default class notifications extends Component {
                 <View style={styles.avatarContainer}>
                   <Avatar
                     rounded
-                    size={70}
+                    size={50}
                     source={{
                       uri: !d.img
                         ? global.ASSETS.PROFILE
@@ -129,14 +124,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   flatlist: {
-    backgroundColor: "rgba(187,187,187,10)",
-    borderBottomColor: "#fff",
+    borderBottomColor: "#000",
     borderBottomWidth: 1,
   },
   avatarContainer: {
     marginVertical: 10,
-    // margin: 10
-    // marginHorizontal: 10
   },
   nameText: {
     color: global.COLOR.PRIMARY,

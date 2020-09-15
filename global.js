@@ -21,6 +21,20 @@ axios.defaults.baseURL =
   // "http://192.168.0.165/project/carwash/webservices/";
   "https://dacwash.com/webservices/";
 
+// log request
+axios.interceptors.request.use((request) => {
+  console.log("Starting Request :", request.baseURL + request.url);
+  console.log("Request Data :", request.data);
+  console.log("Request Header :", request.headers.Authorization);
+  return request;
+});
+
+// log response
+axios.interceptors.response.use((response) => {
+  console.log("Response: \n", response.status, response.data);
+  return response;
+});
+
 var { height, width } = Dimensions.get("window");
 export default {
   AUTHTOKEN: "AUTH", // for auth in app and key for async storage
@@ -45,6 +59,7 @@ export default {
     DEVICEID: "device_id",
     LANGUAGE: "eng",
     SUPPORT_MAIL: "dacwash@gmail.com",
+    CURRENCY: "€",
     // DEVICETOKEN: ""
   },
   BOOKING_ID: "", // for getting booking details

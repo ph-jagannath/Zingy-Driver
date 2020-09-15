@@ -1,88 +1,6 @@
 import React, { Component } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  FlatList,
-  TouchableWithoutFeedback,
-  Image,
-  Alert,
-} from "react-native";
-import MapView, { Marker } from "react-native-maps";
-import { Avatar } from "react-native-elements";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Text, StyleSheet, View, Image } from "react-native";
 import global from "../global";
-import axios from "axios";
-
-// const DATA = [
-//   {
-//     booking_id: "583",
-//     img: "",
-//     first_name: "Rachitsharma",
-//     last_name: "",
-//     mobile: "987654321",
-//     country_code: "+61",
-//     rating: 0,
-//     user_rating: 0,
-//     status: "2",
-//     charges: "400.00",
-//     booking_date: "2020-02-15",
-//     booking_time: "19:55:45",
-//     start_booking_time: "2020-02-15 20:10:42",
-//     booking_address:
-//       "Unnamed Road, Ambika Colony, Shiv Nagar, Jaipur, Rajasthan 302029",
-//     payment_type: "2",
-//     booking_type: "1",
-//     fair_review: "",
-//     booking_cancel_time: "",
-//     complete_wash_duration: "COMPLETE WASH",
-//     cancel_reason_text: "",
-//     transaction_id: "",
-//     UserVehicle: {
-//       id: "13",
-//       name: null,
-//       user_id: "393",
-//       make_id: "2",
-//       vehicle_model_id: "11",
-//       type: null,
-//       year: "2019",
-//       color: "Brown",
-//       country_id: "9",
-//       plate_code: "FGA",
-//       plate_number: "9797",
-//       car_registration: null,
-//       insurance_expiry: null,
-//       tire_manufactured: null,
-//       battery_lifetime: null,
-//       tyre_pressure_fr: null,
-//       tyre_pressure_fl: null,
-//       tyre_pressure_rr: null,
-//       tyre_pressure_rl: null,
-//       vehicle_picture: null,
-//       status: "1",
-//       created: "2020-02-08 21:27:58",
-//       modified: "2020-02-08 21:27:58",
-//       Make: {
-//         id: "2",
-//         name: "Alfa Romeo",
-//         make_logo: "make_logo_1548771537.18.png",
-//         status: "1",
-//         created: "2018-12-24 00:00:00",
-//         modified: "2019-01-29 14:18:57"
-//       },
-//       VehicleModel: {
-//         id: "11",
-//         name: "4C",
-//         make_id: "2",
-//         type: "SUV",
-//         status: "1",
-//         created: "2019-04-02 00:00:00",
-//         modified: "2019-04-02 00:00:00"
-//       },
-//       Country: []
-//     }
-//   }
-// ];
 
 export default class taskDetails extends Component {
   static navigationOptions = {
@@ -106,6 +24,7 @@ export default class taskDetails extends Component {
   }
   render() {
     let d = this.props.navigation.getParam("data", "no-data");
+    console.log("s", d);
     return (
       <View style={styles.bgContainer}>
         <View>
@@ -126,7 +45,7 @@ export default class taskDetails extends Component {
           {/* complete container */}
           <View style={styles.completeContainer}>
             <Text style={styles.dateText}>
-              {d.booking_date} , {d.booking_time}
+              {d.booking_date} {d.booking_time}
             </Text>
             <Text style={styles.nameText}>
               {d.status == "9"
@@ -149,14 +68,16 @@ export default class taskDetails extends Component {
               <View style={styles.textContainer}>
                 <Text style={styles.nameText}>{d.first_name}</Text>
                 <Text style={styles.mobileText}>
-                  {d.country_code}
+                  {/* {d.country_code} */}
                   {d.mobile}
                 </Text>
               </View>
             </View>
             <View style={styles.textContainer}>
-              <Text style={styles.mobileText}>{d.charges}</Text>
-              <Text style={styles.mobileText}>AUD</Text>
+              <Text style={styles.mobileText}>
+                {global.CONSTANT.CURRENCY} {d.booking_amount}
+              </Text>
+              {/* <Text style={styles.mobileText}>{global.CONSTANT.CURRENCY}</Text> */}
             </View>
           </View>
           <View style={styles.textContainer}>

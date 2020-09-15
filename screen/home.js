@@ -8,8 +8,7 @@ import {
   Alert,
   Switch,
 } from "react-native";
-import { Icon, Overlay, Button } from "react-native-elements";
-import logo from "../assets/icon_trans.png";
+import { Icon, Overlay } from "react-native-elements";
 import MapView from "react-native-maps";
 import { RadioButton, Divider, Snackbar } from "react-native-paper";
 import * as Permissions from "expo-permissions";
@@ -111,7 +110,6 @@ export default class home extends Component {
   };
 
   render() {
-    const { checked } = this.state;
     return (
       // bg container
       <View style={styles.bgContainer}>

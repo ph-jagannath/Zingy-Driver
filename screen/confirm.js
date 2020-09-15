@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  FlatList,
-  Image,
-} from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import { Icon, Button } from "react-native-elements";
 import MapView from "react-native-maps";
 import * as Permissions from "expo-permissions";

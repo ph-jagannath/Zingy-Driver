@@ -62,7 +62,7 @@ class Backend {
       callback({
         _id: data.key,
         text: msg.Message,
-        createdAt: Date.now(),
+        createdAt: moment(msg.Date).format(),
         user: {
           _id: msg.SenderId,
           name: msg.Sendername,
@@ -81,7 +81,7 @@ class Backend {
         // user: msg[i].user
         Message: msg[i].text,
         Time: "",
-        Date: moment().format("YYYY-MM-DD hh:mm a").toString(),
+        Date: Date.now(),
         Timestamp: "",
         chatType: "Text",
         SenderId: data.booking_driver_id,

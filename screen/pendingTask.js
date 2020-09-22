@@ -67,7 +67,7 @@ export default class pendingTask extends Component {
         if (response.data.response.status) {
           this.setState({ data: response.data.response.data });
         } else {
-          this.setState({ buttonLoading: false });
+          this.setState({ data: [], buttonLoading: false });
           // Alert.alert("Car Wash", response.data.response.message);
         }
       }.bind(this)

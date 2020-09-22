@@ -64,7 +64,7 @@ export default class activeTask extends Component {
           console.log(response.data.response);
           this.setState({ data: response.data.response.data });
         } else {
-          this.setState({ buttonLoading: false });
+          this.setState({ data: [], buttonLoading: false });
           // Alert.alert("Car Wash", response.data.response.message);
         }
       }.bind(this)

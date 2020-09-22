@@ -43,14 +43,16 @@ export default class home extends Component {
   _getLocationAsync = async () => {
     console.log(this.props.navigation.state.routeName);
 
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    let { status } = await Location.getPermissionsAsync({});
     if (status !== "granted") {
+      alert("Permission to access location was denied");
       this.setState({
         errorMessage: "Permission to access location was denied",
       });
     }
 
     let location = await Location.getCurrentPositionAsync({});
+    console.log(location);
     this.setState({
       latitude: location.coords.latitude,
       longitude: location.coords.longitude,

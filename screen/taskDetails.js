@@ -32,11 +32,11 @@ export default class taskDetails extends Component {
           <View>
             <Image
               source={{
-                uri: !d.img
+                uri: !d.vehicle_image
                   ? global.ASSETS.PROFILE
-                  : d.img == ""
+                  : d.vehicle_image == ""
                   ? global.ASSETS.PROFILE
-                  : d.img,
+                  : d.vehicle_image,
               }}
               style={styles.image}
             ></Image>
@@ -51,7 +51,7 @@ export default class taskDetails extends Component {
               {d.status == "9"
                 ? "Reached"
                 : d.status == "2"
-                ? "Competed"
+                ? "Completed"
                 : d.status == "5"
                 ? "Start Wash"
                 : d.status}

@@ -11,6 +11,7 @@ import {
 import { Icon } from "react-native-elements";
 import global from "../global";
 import axios from "axios";
+import haversine from "haversine";
 
 export default class activeTask extends Component {
   constructor(props) {
@@ -20,34 +21,7 @@ export default class activeTask extends Component {
       data: [],
     };
   }
-  // Calculate Distance using Coordinates
-  distance(lat1, lon1, lat2, lon2, unit) {
-    if (lat1 == lat2 && lon1 == lon2) {
-      return 0;
-    } else {
-      var radlat1 = (Math.PI * lat1) / 180;
-      var radlat2 = (Math.PI * lat2) / 180;
-      var theta = lon1 - lon2;
-      var radtheta = (Math.PI * theta) / 180;
-      var dist =
-        Math.sin(radlat1) * Math.sin(radlat2) +
-        Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-      if (dist > 1) {
-        dist = 1;
-      }
-      dist = Math.acos(dist);
-      dist = (dist * 180) / Math.PI;
-      dist = dist * 60 * 1.1515;
-      if (unit == "K") {
-        dist = dist * 1.609344;
-      }
-      if (unit == "N") {
-        dist = dist * 0.8684;
-      }
-      dist = Math.round(dist * 100) / 100;
-      return dist;
-    }
-  }
+
   getData = () => {
     this.setState({
       buttonLoading: true,
@@ -76,6 +50,7 @@ export default class activeTask extends Component {
       <View style={styles.bgContainer}>
         <FlatList
           data={this.state.data}
+          showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl
               refreshing={false}
@@ -121,13 +96,15 @@ export default class activeTask extends Component {
                   <View style={styles.distanceContainer}>
                     <Text>Distance : </Text>
                     <Text style={styles.nameText}>
-                      {this.distance(
-                        global.DRIVER_LOCATION[0],
-                        global.DRIVER_LOCATION[1],
-                        d.booking_lat,
-                        d.booking_long,
-                        "K"
-                      )}
+                      {haversine(
+                        {
+                          latitude: global.DRIVER_LOCATION[0],
+                          longitude: global.DRIVER_LOCATION[1],
+                        },
+                        { latitude: d.booking_lat, longitude: d.booking_long },
+                        { unit: "mile" }
+                      ).toFixed(4)}{" "}
+                      Miles
                     </Text>
                   </View>
                   <View style={styles.distanceContainer}>

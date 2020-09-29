@@ -39,8 +39,7 @@ export default class userDrawer extends Component {
       this.setState({
         errorMessage: "Permission to access location was denied",
       });
-    }
-    {
+    } else {
       let location = await Location.getCurrentPositionAsync({
         accuracy: 6,
       });

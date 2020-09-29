@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import global from "../global";
 import i18n from "i18n-js";
+import Axios from "axios";
 
 let user_check = "";
 export default class authLoading extends Component {
@@ -47,6 +48,22 @@ export default class authLoading extends Component {
           }
         );
 
+        Axios({
+          method: "post",
+          url: `update_notification_setting`,
+          data: {
+            user_type: "2",
+            device_id: global.CONSTANT.DEVICEID,
+            user_id: global.USER.user_id,
+            reason_for_offline: "",
+            device_type: global.CONSTANT.DEVICETYPE,
+            not_status: 1,
+          },
+        }).then(
+          function (response) {
+            console.log(response.data);
+          }.bind(this)
+        );
         this.props.navigation.navigate("UserApp");
       }
     } catch (error) {

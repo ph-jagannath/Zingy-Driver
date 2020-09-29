@@ -34,38 +34,59 @@ export default class userDrawer extends Component {
 
   updateLocation = async () => {
     // get current Location
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    let { status } = await Location.requestPermissionsAsync();
     if (status !== "granted") {
       this.setState({
         errorMessage: "Permission to access location was denied",
       });
     }
+    {
+      let location = await Location.getCurrentPositionAsync({
+        accuracy: 6,
+      });
+      // get location end
+      // set location
+      let lat, lng;
+      lat = location.coords.latitude;
+      lng = location.coords.longitude;
+      global.DRIVER_LOCATION[0] = lat;
+      global.DRIVER_LOCATION[1] = lng;
+      axios({
+        method: "post",
+        url: `update_location_sp`,
+        data: {
+          user_id: global.USER.user_id,
+          latitude: lat,
+          language: global.CONSTANT.LANGUAGE,
+          longitude: lng,
+        },
+      }).then(
+        function () {
+          // console.log(response.data);
+        }.bind(this)
+      );
+    }
+  };
 
-    let location = await Location.getCurrentPositionAsync({
-      accuracy: 6,
-    });
-    // get location end
-    // set location
-    let lat, lng;
-    lat = location.coords.latitude;
-    lng = location.coords.longitude;
-    global.DRIVER_LOCATION[0] = lat;
-    global.DRIVER_LOCATION[1] = lng;
+  handleOffline = (val) => {
     axios({
       method: "post",
-      url: `update_location_sp`,
+      url: `update_notification_setting`,
       data: {
+        user_type: "2",
+        device_id: global.CONSTANT.DEVICEID,
         user_id: global.USER.user_id,
-        latitude: lat,
-        language: global.CONSTANT.LANGUAGE,
-        longitude: lng,
+        reason_for_offline: "Finished",
+        device_type: global.CONSTANT.DEVICETYPE,
+        not_status: 0,
       },
     }).then(
-      function () {
-        // console.log(response.data);
+      function (response) {
+        console.log(response.data);
       }.bind(this)
     );
   };
+
   //  Logout Functionality
   handleLogout = () => {
     Alert.alert(
@@ -76,6 +97,7 @@ export default class userDrawer extends Component {
           text: "Yes",
           onPress: () => {
             AsyncStorage.multiRemove([global.AUTHTOKEN, global.USER_ROLE]);
+            this.handleOffline();
             this.props.navigation.navigate("Auth");
           },
         },

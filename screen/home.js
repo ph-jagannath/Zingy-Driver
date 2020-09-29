@@ -49,17 +49,17 @@ export default class home extends Component {
       this.setState({
         errorMessage: "Permission to access location was denied",
       });
+    } else {
+      let location = await Location.getCurrentPositionAsync({});
+      console.log(location);
+      this.setState({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        marginBottom: 0,
+        key: Math.random(),
+        loading: false,
+      });
     }
-
-    let location = await Location.getCurrentPositionAsync({});
-    console.log(location);
-    this.setState({
-      latitude: location.coords.latitude,
-      longitude: location.coords.longitude,
-      marginBottom: 0,
-      key: Math.random(),
-      loading: false,
-    });
   };
 
   // Validate

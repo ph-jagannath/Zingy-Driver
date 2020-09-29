@@ -80,7 +80,22 @@ export default class login extends Component {
           }
         );
         global.USER = JSON.parse(userData);
-
+        axios({
+          method: "post",
+          url: `update_notification_setting`,
+          data: {
+            user_type: "2",
+            device_id: global.CONSTANT.DEVICEID,
+            user_id: global.USER.user_id,
+            reason_for_offline: "",
+            device_type: global.CONSTANT.DEVICETYPE,
+            not_status: 1,
+          },
+        }).then(
+          function (response) {
+            console.log(response.data);
+          }.bind(this)
+        );
         this.props.navigation.navigate("UserApp");
       }
     } catch (error) {

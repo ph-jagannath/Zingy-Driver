@@ -468,7 +468,7 @@ export default class tracking extends Component {
                   : global.BOOKING_TRACK_STATUS[0] == "4"
                   ? "Refunded"
                   : global.BOOKING_TRACK_STATUS[0] == "5"
-                  ? "Comple Wash"
+                  ? "Complete Wash"
                   : global.BOOKING_TRACK_STATUS[0] == "6"
                   ? "Cancelled"
                   : global.BOOKING_TRACK_STATUS[0] == "7"

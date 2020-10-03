@@ -7,8 +7,11 @@ import global from "./global";
 console.disableYellowBox = true;
 
 export default class App extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+
     this.token();
+    this.state = {};
   }
 
   token = async () => {

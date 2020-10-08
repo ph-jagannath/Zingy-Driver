@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 import background from "../assets/background.png";
 import logo from "../assets/logo.png";
-import { Button, Input, Overlay } from "react-native-elements";
+import { Button, Header, Icon, Input, Overlay } from "react-native-elements";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import global from "../global";
 
@@ -84,6 +84,23 @@ export default class Forgot extends Component {
         style={styles.bgContainer}
         imageStyle={{ resizeMode: "stretch" }}
       >
+        <Header
+          containerStyle={styles.header}
+          backgroundColor={"transparent"}
+          leftComponent={
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={styles.leftIcon}
+            >
+              <Icon name="chevron-left" size={36} color={global.COLOR.gray} />
+            </TouchableOpacity>
+          }
+          centerComponent={
+            <Text style={{ fontWeight: "bold", fontSize: 18 }}>
+              Forgot Password
+            </Text>
+          }
+        />
         <KeyboardAwareScrollView
           // style={styles.container}
           enableOnAndroid
@@ -125,7 +142,7 @@ export default class Forgot extends Component {
               containerStyle={styles.buttonContainer}
               buttonStyle={styles.buttonStyle}
               loading={this.state.buttonLoading}
-              title="LOG IN"
+              title="Submit"
               titleStyle={styles.buttonTitle}
               TouchableComponent={TouchableOpacity}
               onPress={this.handleValidate}
@@ -143,7 +160,7 @@ const styles = StyleSheet.create({
     width: null,
   },
   logo: {
-    marginTop: 100,
+    // marginTop: 100,
   },
   inputContainer: {
     // marginBottom: 50,

@@ -32,7 +32,7 @@ export default class Forgot extends Component {
   // Validate
   handleValidate = () => {
     if (this.state.number.trim() == "") {
-      Alert.alert("Alert", "Please enter phone number");
+      Alert.alert("Alert", "Please enter email.");
     } else {
       this.handleLogin();
     }

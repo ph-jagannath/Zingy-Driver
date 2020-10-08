@@ -104,13 +104,13 @@ export default class login extends Component {
   };
   // Validate
   handleValidate = () => {
-    if (this.state.number == "") {
-      Alert.alert(" Alert", "Please enter phone number");
+    if (this.state.number.trim() == "") {
+      Alert.alert(" Alert", "Please enter email");
       // } else if (this.state.number.length < 5) {
       //   Alert.alert(" Alert", "Number field should greater than 5 characters");
-    } else if (this.state.password == "") {
+    } else if (this.state.password.trim() == "") {
       Alert.alert("Login Alert", "Please enter password");
-    } else if (this.state.password.length < 6) {
+    } else if (this.state.password.trim().length < 6) {
       Alert.alert(
         "Login Alert",
         "Password field should not be less than 6 characters"

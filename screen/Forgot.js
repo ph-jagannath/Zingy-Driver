@@ -16,7 +16,7 @@ import { Button, Input, Overlay } from "react-native-elements";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import global from "../global";
 
-export default class login extends Component {
+export default class Forgot extends Component {
   static navigationOptions = {
     header: null,
   };
@@ -25,96 +25,14 @@ export default class login extends Component {
     super(props);
     this.state = {
       number: "", //chnage
-      password: "", //change
       buttonLoading: false,
-      // device_id: ""
     };
   }
 
-  async storeToken(responseData) {
-    console.log(responseData);
-    await AsyncStorage.setItem(global.AUTHTOKEN, responseData, (err) => {
-      if (err) {
-        console.log("an error store token async");
-        throw err;
-      }
-      console.log("Token Stored");
-    }).catch((err) => {
-      console.log("error is: " + err);
-    });
-  }
-
-  getToken = async (data) => {
-    try {
-      let accessToken = await AsyncStorage.getItem(global.AUTHTOKEN).then(
-        (value) => {
-          if (value) {
-            console.log("abc");
-            return value;
-          }
-        }
-      );
-
-      if (!accessToken) {
-        console.log("no access token");
-      } else {
-        global.AUTHTOKEN = accessToken;
-        // store user data
-        AsyncStorage.setItem(global.USER_DATA, JSON.stringify(data), (err) => {
-          if (err) {
-            console.log("an error");
-            throw err;
-          }
-          console.log("User Data Stored");
-        }).catch((err) => {
-          console.log("error is: " + err);
-        });
-
-        let userData = await AsyncStorage.getItem(global.USER_DATA).then(
-          (value) => {
-            if (value) {
-              // console.log(value);
-
-              return value;
-            }
-          }
-        );
-        global.USER = JSON.parse(userData);
-        axios({
-          method: "post",
-          url: `update_notification_setting`,
-          data: {
-            user_type: "2",
-            device_id: global.CONSTANT.DEVICEID,
-            user_id: global.USER.user_id,
-            reason_for_offline: "",
-            device_type: global.CONSTANT.DEVICETYPE,
-            not_status: 1,
-          },
-        }).then(
-          function (response) {
-            console.log(response.data);
-          }.bind(this)
-        );
-        this.props.navigation.navigate("UserApp");
-      }
-    } catch (error) {
-      console.log("Something went wrong");
-    }
-  };
   // Validate
   handleValidate = () => {
-    if (this.state.number == "") {
-      Alert.alert(" Alert", "Please enter phone number");
-      // } else if (this.state.number.length < 5) {
-      //   Alert.alert(" Alert", "Number field should greater than 5 characters");
-    } else if (this.state.password == "") {
-      Alert.alert("Login Alert", "Please enter password");
-    } else if (this.state.password.length < 6) {
-      Alert.alert(
-        "Login Alert",
-        "Password field should not be less than 6 characters"
-      );
+    if (this.state.number.trim() == "") {
+      Alert.alert("Alert", "Please enter phone number");
     } else {
       this.handleLogin();
     }
@@ -127,13 +45,9 @@ export default class login extends Component {
     // this.props.navigation.navigate("UserApp");
     axios({
       method: "post",
-      url: "driver_login",
+      url: "forget_password_washer",
       data: {
-        password: this.state.password,
-        device_id: global.CONSTANT.DEVICEID,
-        mobile: this.state.number,
-        device_type: global.CONSTANT.DEVICETYPE,
-        language: global.CONSTANT.LANGUAGE,
+        email: this.state.number,
       },
       headers: { "Content-Type": "application/json" },
       validateStatus: (status) => {
@@ -142,13 +56,21 @@ export default class login extends Component {
     }).then(
       function (response) {
         console.log(response.data);
+        this.setState({ buttonLoading: false });
         if (response.data.response.status) {
-          console.log(response.data.response.data[0]);
-          this.storeToken(response.data.response.data[0].user_id);
-          this.getToken(response.data.response.data[0]);
+          Alert.alert(
+            "Alert",
+            response.data.response.message,
+            [
+              {
+                text: "Ok",
+                onPress: () => this.props.navigation.goBack(),
+              },
+            ],
+            { cancelable: false }
+          );
         } else {
-          this.setState({ buttonLoading: false });
-          Alert.alert("Login Status", response.data.response.message);
+          Alert.alert("Alert", response.data.response.message);
         }
       }.bind(this)
     );
@@ -196,34 +118,6 @@ export default class login extends Component {
                 value={this.state.number}
               />
             </View>
-            {/* password container */}
-
-            {/* form container */}
-            <View style={styles.fromContainer}>
-              <Input
-                label="Password"
-                labelStyle={styles.labelText}
-                secureTextEntry={true}
-                textContentType="password"
-                inputContainerStyle={styles.inputFiedContainer}
-                keyboardType="default"
-                inputStyle={styles.inputText}
-                onChangeText={(v) => this.setState({ password: v })}
-                value={this.state.password}
-              />
-            </View>
-
-            {/* forgot password  */}
-            <>
-              <Text
-                style={styles.forgot_pass}
-                onPress={() => {
-                  this.props.navigation.navigate("Forgot");
-                }}
-              >
-                Forgot Password ?
-              </Text>
-            </>
           </View>
           {/* login Button */}
           <View>

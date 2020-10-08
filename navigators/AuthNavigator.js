@@ -4,15 +4,17 @@ import Login from "../screen/login";
 // import Forgot from "../screen/forgot";
 
 import { createStackNavigator } from "react-navigation-stack";
+import Forgot from "../screen/Forgot";
 
 export default createAppContainer(
   createStackNavigator(
     {
-      Login: { screen: Login }
+      Login: { screen: Login },
+      Forgot: { screen: Forgot },
     },
     {
       initialRouteName: "Login",
-      headerLayoutPreset: "center"
+      headerLayoutPreset: "center",
     }
   )
 );

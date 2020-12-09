@@ -3,7 +3,6 @@
     "name": "DacWash Driver",
     "slug": "dacwash-driver",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -48,7 +47,6 @@
       "versionCode": 1
     },
     "androidNavigationBar": {
-      "visible": true,
       "barStyle": "dark-content",
       "backgroundColor": "#000"
     },

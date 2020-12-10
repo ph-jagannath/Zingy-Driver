@@ -4,7 +4,7 @@
     "slug": "dacwash-driver",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -27,7 +27,7 @@
       },
       "supportsTablet": true,
       "bundleIdentifier": "com.dacwash.driver",
-      "buildNumber": "1",
+      "buildNumber": "2",
       "config": {
         "googleSignIn": {
           "reservedClientId": "com.googleusercontent.apps.244777178350-4uqs6s3uj44d8rimupbvee5b4ou5jgt1"

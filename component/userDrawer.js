@@ -97,6 +97,7 @@ export default class userDrawer extends Component {
           onPress: () => {
             AsyncStorage.multiRemove([global.AUTHTOKEN, global.USER_ROLE]);
             this.handleOffline();
+            global.INTERVALS[0] == 0;
             this.props.navigation.navigate("Auth");
           },
         },

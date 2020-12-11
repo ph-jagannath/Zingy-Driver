@@ -157,7 +157,7 @@ export default class userDrawer extends Component {
             </View>
           </TouchableOpacity>
           {/* 1 booking container */}
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => this.props.navigation.navigate("bookings")}
             style={{
               backgroundColor:
@@ -184,7 +184,7 @@ export default class userDrawer extends Component {
                 size={26}
               />
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           {/* 2 cancel booking container */}
           {/* <TouchableOpacity
             onPress={() => this.props.navigation.navigate("cancelBooking")}

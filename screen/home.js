@@ -15,6 +15,7 @@ import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
 import axios from "axios";
 import global from "../global";
+import Bookings from "./bookings";
 
 export default class home extends Component {
   static navigationOptions = {
@@ -22,7 +23,7 @@ export default class home extends Component {
   };
   constructor(props) {
     super(props);
-    this._getLocationAsync();
+    // this._getLocationAsync();
     this.state = {
       alert: false,
       switchValue: true,
@@ -33,7 +34,7 @@ export default class home extends Component {
       longitude: 14.409943,
       latitudeDelta: 0.006,
       longitudeDelta: 0.003,
-      marginBottom: 1,
+      marginBottom: 0,
       key: 0,
     };
   }
@@ -153,8 +154,10 @@ export default class home extends Component {
             </View>
           </View>
         </View>
+
+        <Bookings />
         {/* map view container */}
-        <MapView
+        {/* <MapView
           key={this.state.key}
           loadingEnabled={false}
           showsUserLocation={true}
@@ -168,7 +171,7 @@ export default class home extends Component {
           liteMode={false}
           pitchEnabled={true}
           onMapReady={this._onMapReady}
-          provider="google"
+          // provider="google"
           style={{
             flex: 1,
 
@@ -180,7 +183,7 @@ export default class home extends Component {
             latitudeDelta: this.state.latitudeDelta,
             longitudeDelta: this.state.longitudeDelta,
           }}
-        />
+        /> */}
         <Snackbar
           visible={this.state.alert}
           onDismiss={() => this.setState({ alert: false })}

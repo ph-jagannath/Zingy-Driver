@@ -155,7 +155,7 @@ export default class home extends Component {
           </View>
         </View>
 
-        <Bookings />
+        <Bookings navigation={this.props.navigation} />
         {/* map view container */}
         {/* <MapView
           key={this.state.key}

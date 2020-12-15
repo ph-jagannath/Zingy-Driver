@@ -77,6 +77,7 @@ export default class notifications extends Component {
     return (
       <View style={styles.bgContainer}>
         <FlatList
+          showsVerticalScrollIndicator={false}
           data={this.state.data}
           ListEmptyComponent={
             <Text

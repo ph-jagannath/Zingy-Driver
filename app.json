@@ -4,7 +4,7 @@
     "slug": "dacwash-driver",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -44,7 +44,7 @@
           "apiKey": "AIzaSyC0tHRwMeGx9J5w1Soe2vBWSMvA6nub4gQ"
         }
       },
-      "versionCode": 2
+      "versionCode": 3
     },
     "androidNavigationBar": {
       "barStyle": "dark-content",

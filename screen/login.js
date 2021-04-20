@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import axios from "axios";
 import background from "../assets/background.png";
-import logo from "../assets/logo.png";
+// import logo from "../assets/logo.png";
 import { Button, Input, Overlay } from "react-native-elements";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import global from "../global";
@@ -24,8 +24,8 @@ export default class login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      number: "", //chnage
-      password: "", //change
+      number: "phontinent@gmail.com", //chnage
+      password: "123456", //change
       buttonLoading: false,
       // device_id: ""
     };
@@ -172,7 +172,7 @@ export default class login extends Component {
           {/* logo container */}
           <View style={styles.logo}>
             <Image
-              source={logo}
+              source={global.ASSETS.LOGO}
               style={{
                 width: 240,
                 height: 200,

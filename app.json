@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "DacWash Driver",
-    "slug": "dacwash-driver",
+    "name": "Zingy Driver",
+    "slug": "Zingy-driver",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.4",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/LOGO.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "cover",
@@ -51,7 +51,7 @@
       "backgroundColor": "#000"
     },
     "notification": {
-      "icon": "./assets/icon.png",
+      "icon": "./assets/LOGO.png",
       "color": "#018ACE",
       "iosDisplayInForeground": true,
       "androidMode": "default"

@@ -136,9 +136,9 @@ export default class home extends Component {
               <Image
                 source={global.ASSETS.LOGO_WHITE}
                 style={{
-                  width: 80,
+                  width: 100,
                   height: 60,
-                  resizeMode: "cover",
+                  resizeMode: "contain",
                   // alignSelf: "center",
                 }}
               />

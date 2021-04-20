@@ -43,8 +43,8 @@ export default {
 
   FONT: {},
   COLOR: {
-    PRIMARY: "#6ABE43",
-    PRIMARY_DARK: "#006937",
+    PRIMARY: "#0E94DC",
+    PRIMARY_DARK: "#0E94DC",
   },
   CONSTANT: {
     // APPNAME: Constants.manifest.name,
@@ -68,8 +68,8 @@ export default {
     PROFILE: "https://www.w3schools.com/howto/img_avatar.png",
     TICK: require("./assets/tick.png"),
     ADD: require("./assets/add.png"),
-    LOGO_WHITE: require("./assets/logo-white.png"),
-    LOGO: require("./assets/logo.png"),
+    LOGO_WHITE: require("./assets/LOGO.png"),
+    LOGO: require("./assets/LOGO.png"),
     CAR_ICON: require("./assets/car-wash.png"),
   },
   DRIVER_LOCATION: [
